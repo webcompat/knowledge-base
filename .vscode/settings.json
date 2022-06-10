@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "yaml.schemas": {
+    "./schemas/entry.schema.json": "data/**/*.yml"
+  }
+}

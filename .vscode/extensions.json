@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    // To enable Schema validation for YAML files
+    "redhat.vscode-yaml",
+
+    // To enable auto-formatting YAML files on save
+    "esbenp.prettier-vscode"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://knowledge-base.webcompat.com/entry.schema.json",
+  "title": "Knowledge Base Entry",
+  "description": "Entry in the WebCompat Knowledge Base",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "title": {
+      "description": "Single-sentence title summarizing the issues cause",
+      "type": "string"
+    },
+    "severity": {
+      "description": "Estimation of how severe this issue is",
+      "type": "string",
+      "enum": ["low", "normal", "high", "critical"]
+    },
+    "tags": {
+      "description": "List of tags to attached to this issue",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "symptoms": {
+      "description": "List of strings that describe how this bug manifests. Include console messages if there are any",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "solutions": {
+      "description": "Collection of information on how this can be solved",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interventions": {
+          "description": "List of URLs to interventions that are shipping or have been shipping. Link to the code in the GitHub repository, and use the canonical URLs to ensure persistance over time",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "notes": {
+          "description": "List of notes about previous solving attempts, etc",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "workarounds": {
+          "description": "List of descriptions of how web developers can work around the issue",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "references": {
+      "description": "Collection of references related to this issue",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "breakage": {
+          "description": "List of URLs to issues where actual site breakage is tracked",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "platform_issues": {
+          "description": "List of URLs to issues tracking the underlying platform issue",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "telemetry": {
+          "description": "List of URLs pointing to telemetry data indicating how widespread this issue is. Link to Use Counters etc",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "testcases": {
+          "description": "List of URLs to testcases, or path to a directory inside this repository",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}
