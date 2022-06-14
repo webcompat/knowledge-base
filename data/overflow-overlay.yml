@@ -1,0 +1,33 @@
+title: "Firefox doesn't support the non-standard 'overflow:overlay' setting"
+severity: low
+tags:
+  - css
+
+symptoms:
+  - Some sites have text that overflows their boxes in Firefox where the overflow is hidden behind a scrollbar in Webkit and Chrome.
+
+solutions:
+  notes:
+    - Firefox should treat overflow:overlay as an alias for overflow:auto, but we'd need a special tweak to make scrollbars overlay.
+  workarounds:
+    - Web Developers can try <code>overflow-y:auto; overflow-x:hidden</code> with <code>width:100vh</code> rather than <code>overflow:overlay</code>.
+
+references:
+  breakage:
+    - https://webcompat.com/issues/21212
+    - https://webcompat.com/issues/24462
+    - https://webcompat.com/issues/50378
+    - https://webcompat.com/issues/50378
+    - https://webcompat.com/issues/57504
+    - https://webcompat.com/issues/57676
+    - https://webcompat.com/issues/62572
+    - https://webcompat.com/issues/64199
+    - https://webcompat.com/issues/73463
+    - https://webcompat.com/issues/105417
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521631
+    - https://bugs.chromium.org/p/chromium/issues/detail?id=649496
+    - https://bugs.chromium.org/p/chromium/issues/detail?id=710214
+    - https://bugs.webkit.org/show_bug.cgi?id=189811
+  testcases:
+    - ./testcases/overflow-overlay/index.html

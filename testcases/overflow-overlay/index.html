@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    div {
+      width: 15em;
+      height: 10em;
+      border: dotted;
+      overflow: visible;
+      margin-left: 20px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <p>In Firefox, column 1 looks like column 2, In Safari and Blink column 1 looks like column 3. In Firefox, <code>overflow:overlay</code> works like <code>overflow:visible</code> (because <code>visible</code> is the default and Firefox doesn't recognise <code>overlay</code>), but in WebKit browsers, <code>overflow:overlay</code> is more like <code>overflow:auto</code> (except that scrollbars are handled a little differently).</p>
+
+  <section>
+
+    <div style="overflow: overlay">
+      <p>Parent is <code>overflow: overlay</code></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div style="overflow: visible">
+      <p>Parent is <code>overflow: visible</code></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <div style="overflow: auto">
+      <p>Parent is <code>overflow: auto</code></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+  </section>
+
+</body>
