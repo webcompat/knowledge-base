@@ -1,4 +1,4 @@
-title: "Firefox doesn't support the non-standard 'overflow:overlay' setting"
+title: "Firefox doesn't support the non-standard `overflow: overlay` setting"
 severity: low
 tags:
   - css
@@ -10,7 +10,7 @@ solutions:
   notes:
     - Firefox should treat overflow:overlay as an alias for overflow:auto, but we'd need a special tweak to make scrollbars overlay.
   workarounds:
-    - Web Developers can try <code>overflow-y:auto; overflow-x:hidden</code> with <code>width:100vh</code> rather than <code>overflow:overlay</code>.
+    - "Web Developers can try `overflow-y: auto; overflow-x: hidden` with `width: 100vh` rather than `overflow: overlay`."
 
 references:
   breakage:
@@ -30,4 +30,4 @@ references:
     - https://bugs.chromium.org/p/chromium/issues/detail?id=710214
     - https://bugs.webkit.org/show_bug.cgi?id=189811
   testcases:
-    - ./testcases/overflow-overlay/index.html
+    - https://bug1521631.bmoattachments.org/attachment.cgi?id=9281215
