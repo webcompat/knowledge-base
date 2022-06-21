@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "Mouse events on disabled input elements"
+severity: high
+tags:
+  - dom
+  - events
+  - input
+  - interop2022
+
+symptoms:
+  - "Cicking on a form control doesn't respond"
+  - "Inspecting form shows the control is disabled"
+
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/24628
+    - https://github.com/webcompat/web-bugs/issues/55413
+    - https://github.com/webcompat/web-bugs/issues/55857
+    - https://github.com/webcompat/web-bugs/issues/65773
+    - https://github.com/webcompat/web-bugs/issues/68347
+    - https://github.com/webcompat/web-bugs/issues/68347
+    - https://github.com/webcompat/web-bugs/issues/72988
+    - https://github.com/webcompat/web-bugs/issues/73699
+    - https://github.com/webcompat/web-bugs/issues/105932
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1653882
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1774035
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1428838
+  testcases:
+    - https://github.com/web-platform-tests/wpt/pull/32381
