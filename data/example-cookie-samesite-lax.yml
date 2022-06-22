@@ -29,4 +29,4 @@ references:
   testcases:
     - https://wpt.fyi/results/cookies/samesite/setcookie-lax.https.html
     - https://non-existing-testcase-example.glitch.me
-    - ./testcases/example-cookie-samesite-lax/
+    - ../testcases/example-cookie-samesite-lax/
