@@ -9,7 +9,8 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: "Checkout"
+        uses: actions/checkout@v2
       - name: "Cache"
         uses: actions/cache@v3
         with:
@@ -18,11 +19,11 @@ jobs:
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
-            tools/**/target/
+            ./target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-      - uses: actions-rs/toolchain@v1
+      - name: "Rust toolchain"
+        uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-      - name: "Run"
-        working-directory: tools/kbcheck
-        run: cargo run --release
+      - name: "Check"
+        run: cargo run --release -p kbcheck

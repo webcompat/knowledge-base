@@ -57,7 +57,7 @@ enum CommandStatus {
 }
 
 fn run() -> CommandStatus {
-    let root_path: PathBuf = ["..", ".."].iter().collect();
+    let root_path = PathBuf::new();
     match validate(&root_path) {
         Ok(errors) => {
             if !errors.is_empty() {
