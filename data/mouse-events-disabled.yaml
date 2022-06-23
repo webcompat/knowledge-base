@@ -11,13 +11,16 @@ symptoms:
   - "Cicking on a form control doesn't respond"
   - "Inspecting form shows the control is disabled"
 
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/js/bug1711082-m.aliexpress.com-undisable-search.js
+
 references:
   breakage:
     - https://github.com/webcompat/web-bugs/issues/24628
     - https://github.com/webcompat/web-bugs/issues/55413
     - https://github.com/webcompat/web-bugs/issues/55857
     - https://github.com/webcompat/web-bugs/issues/65773
-    - https://github.com/webcompat/web-bugs/issues/68347
     - https://github.com/webcompat/web-bugs/issues/68347
     - https://github.com/webcompat/web-bugs/issues/72988
     - https://github.com/webcompat/web-bugs/issues/73699
