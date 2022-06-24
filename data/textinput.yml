@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "Missing implementation of textinput event"
+severity: normal
+tags:
+  - dom
+  - contentEditable
+  - IME
+  - textinput
+
+symptoms:
+  - "Draft.js-based editor broken"
+  - "Wrong character position with IME"
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/js/bug1739489-draftjs-beforeinput.js
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/13503
+    - https://github.com/webcompat/web-bugs/issues/91682
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1633399
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1735227
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1739489
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1739791
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=903746
