@@ -9,7 +9,9 @@ symptoms:
   - "Elements on the page are only partially visible or cut out."
   - "Content doesn't fit the screen."
   - "Elements are too big and overflow their parent container."
-  - 'This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”.'
+
+console_messages:
+  - "This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”."
 
 solutions:
   interventions:
@@ -18,7 +20,7 @@ solutions:
     - "Experiment with implementing `zoom` as a transform + transform-origin shorthand in https://bugzilla.mozilla.org/show_bug.cgi?id=1589766."
     - "The experiment was disabled in https://bugzilla.mozilla.org/show_bug.cgi?id=1599324 due to breakage on sites that were using `zoom` together with `transform`."
     - "A console warning message about using `zoom` property was added in https://bugzilla.mozilla.org/show_bug.cgi?id=1582374."
-    
+
   workarounds:
     - "Web Developers can use `transform: scale()` + `transform-origin: 0 0` instead of `zoom`."
 

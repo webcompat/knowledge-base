@@ -6,7 +6,9 @@ tags:
 
 symptoms:
   - "Sites forgets its state like settings, logins, etc"
-  - 'JS console warning: Cookie "[name]" has "SameSite" policy set to "Lax" because it is missing a "SameSite" attribute, and "SameSite=Lax" is the default value for this attribute.'
+
+console_messages:
+  - Cookie "[name]" has "SameSite" policy set to "Lax" because it is missing a "SameSite" attribute, and "SameSite=Lax" is the default value for this attribute.
 
 solutions:
   interventions:

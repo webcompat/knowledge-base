@@ -23,7 +23,14 @@
       }
     },
     "symptoms": {
-      "description": "List of strings that describe how this bug manifests. Include console messages if there are any",
+      "description": "List of strings that describe how this bug manifests",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "console_messages": {
+      "description": "List of Developer Tools console messages associated with this issue",
       "type": "array",
       "items": {
         "type": "string"
