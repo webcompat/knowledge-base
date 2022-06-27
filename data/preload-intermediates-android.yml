@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: Preload Intermediates on Android
+severity: high
+tags:
+  - ssl
+  - intermediate certificates
+  - android
+
+symptoms:
+  - "Secure connection Failed message is displayed on Firefox for Android"
+  - "Incomplete certificate chain"
+
+references:
+  breakage:
+  - https://webcompat.com/issues/66203
+  - https://webcompat.com/issues/66930
+  - https://github.com/mozilla-mobile/fenix/issues/20769
+  - https://github.com/mozilla-mobile/fenix/issues/21664
+  - https://github.com/webcompat/web-bugs/issues/102811
+  - https://github.com/webcompat/web-bugs/issues/99924
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1672402
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1700040
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1716454
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1774374
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1718744
+  platform_issues:
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1520297
+  - https://bugzilla.mozilla.org/show_bug.cgi?id=1535662
