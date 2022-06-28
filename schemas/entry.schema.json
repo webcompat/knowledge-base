@@ -71,7 +71,7 @@
       "additionalProperties": false,
       "properties": {
         "breakage": {
-          "description": "List of URLs to issues where actual site breakage is tracked",
+          "description": "List of URLs to issues where actual site breakage is tracked. If available, point the link directly to a comment with clear STR",
           "type": "array",
           "items": {
             "type": "string",
