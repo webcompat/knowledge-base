@@ -411,8 +411,10 @@ name = "kbcheck"
 version = "0.1.0"
 dependencies = [
  "jsonschema",
+ "serde",
  "serde_json",
  "serde_yaml",
+ "url",
  "walkdir",
 ]
 
@@ -1036,6 +1038,7 @@ dependencies = [
  "idna",
  "matches",
  "percent-encoding",
+ "serde",
 ]
 
 [[package]]
