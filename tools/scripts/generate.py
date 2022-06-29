@@ -2,6 +2,7 @@ import requests
 import argparse
 import yaml
 import os
+from pathlib import Path
 from slugify import slugify
 
 cwd = os.getcwd()
@@ -12,6 +13,8 @@ BUGZILLA_API = "https://bugzilla.mozilla.org/rest/bug/"
 
 BREAKAGE_STR = ["webcompat", "mozilla-mobile"]
 PLATFORM_STR = ["bugs.chromium.org", "bugs.webkit.org"]
+
+YAML_FILE_EXT = ("*.yaml", "*.yml")
 
 
 def fetch_bug_by_id(bug_id) -> dict:
@@ -53,19 +56,43 @@ def build_obj(bug_id) -> dict:
     return data
 
 
+def check_existing_entries(bug_id) -> list:
+    folder = Path(DATA_PATH)
+    files = [f for f in folder.iterdir() if any(f.match(p) for p in YAML_FILE_EXT)]
+
+    for file in files:
+        with open(file, 'r') as stream:
+            try:
+                contents = yaml.safe_load(stream)
+                # Check the first item in references -> platform_issues list to see if there is a match
+                if "references" in contents and "platform_issues" in contents["references"]:
+                    if contents["references"]["platform_issues"][0] == BUGZILLA_URL + bug_id:
+                        return file
+
+            except yaml.YAMLError as exc:
+                print(exc)
+
+
 def build_yml(bug_id) -> None:
+    existing_entry = check_existing_entries(bug_id)
+
+    if existing_entry:
+        print(f"A knowledge base entry for this bug has been found. Please see `{existing_entry}` for more details.")
+        return
+
     data = build_obj(bug_id)
     title = data["title"]
+
     filename = slugify(title, max_length=40, word_boundary=True, save_order=True)
     path = f"{DATA_PATH}/{filename}.yml"
 
     if os.path.exists(path):
-        print(f"A knowledge base entry for this bug already exists. Please delete `{path}` file and try again.")
+        print(f"A file with the same name already exists: `{path}`, please edit it instead.")
         return
-    else:
-        with open(path, 'w') as f:
-            yaml.dump(data, f, sort_keys=False, default_flow_style=False)
-            print(f"A yml file was created for bug {bug_id}: {title}")
+
+    with open(path, 'w') as f:
+        yaml.dump(data, f, sort_keys=False, default_flow_style=False)
+        print(f"{filename}.yml file was created for bug {bug_id} ({title})")
 
 
 def main() -> None:
