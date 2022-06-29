@@ -1,3 +1,6 @@
 # MacOS ignores
 .DS_Store
 ._*
+
+# Build output from the kbcheck tool
+target/

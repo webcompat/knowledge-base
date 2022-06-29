@@ -15,6 +15,11 @@
       "type": "string",
       "enum": ["low", "normal", "high", "critical"]
     },
+    "user_base_impact": {
+      "description": "Estimation of how many users are affected",
+      "type": "string",
+      "enum": ["small", "medium", "large"]
+    },
     "tags": {
       "description": "List of tags to attached to this issue",
       "type": "array",
@@ -23,7 +28,14 @@
       }
     },
     "symptoms": {
-      "description": "List of strings that describe how this bug manifests. Include console messages if there are any",
+      "description": "List of strings that describe how this bug manifests",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "console_messages": {
+      "description": "List of Developer Tools console messages associated with this issue",
       "type": "array",
       "items": {
         "type": "string"
@@ -64,7 +76,7 @@
       "additionalProperties": false,
       "properties": {
         "breakage": {
-          "description": "List of URLs to issues where actual site breakage is tracked",
+          "description": "List of URLs to issues where actual site breakage is tracked. If available, point the link directly to a comment with clear STR",
           "type": "array",
           "items": {
             "type": "string",
