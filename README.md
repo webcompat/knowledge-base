@@ -12,6 +12,20 @@ Please note that this is still an early **work in progress**, and everything in 
 
 - [Criteria for the `severity` and `user_base_impact` fields](./docs/severity-and-impact.md).
 
+## Script to create yml file for a given bugzilla bug
+
+The script will create a file in the `data` directory and prefill title, breakage reports from webcompat and fenix repository and
+platform links (the original bugzilla bug and any others from bugs.chromium.org or bugs.webkit.org).
+
+It can be run the following way:
+
+```
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+python3 ./tools/scripts/generate.py --bug_id=<bug_id>
+```
+
 ## License
 
 [Creative Commons Public Domain Dedication (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/).
