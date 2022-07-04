@@ -2,8 +2,13 @@ import requests
 import argparse
 import yaml
 import os
+from logging import INFO, basicConfig, getLogger
 from pathlib import Path
 from slugify import slugify
+from urllib.parse import urlparse
+
+basicConfig(level=INFO)
+logger = getLogger("generate_script")
 
 cwd = os.getcwd()
 DATA_PATH = os.path.join(cwd, 'data')
@@ -17,7 +22,7 @@ PLATFORM_STR = ["bugs.chromium.org", "bugs.webkit.org"]
 YAML_FILE_EXT = ("*.yaml", "*.yml")
 
 
-def fetch_bug_by_id(bug_id) -> dict:
+def fetch_bug_by_id(bug_id: str) -> dict:
     url = BUGZILLA_API + bug_id
     params = {"include_fields": "summary,see_also"}
     response = requests.get(url, params=params)
@@ -26,7 +31,7 @@ def fetch_bug_by_id(bug_id) -> dict:
     return result["bugs"][0]
 
 
-def split_see_also_by_type(see_also_list, bug_id) -> list:
+def split_see_also_by_type(see_also_list: list, bug_id: str) -> dict:
     lists = {
         "breakage": [f"{BUGZILLA_URL}{bug_id}#c0"],
         "platform": [BUGZILLA_URL + bug_id]
@@ -42,7 +47,7 @@ def split_see_also_by_type(see_also_list, bug_id) -> list:
     return lists
 
 
-def build_obj(bug_id) -> dict:
+def build_obj(bug_id: str) -> dict:
     bug = fetch_bug_by_id(bug_id)
     lists = split_see_also_by_type(bug["see_also"], bug_id)
     data = {
@@ -56,28 +61,37 @@ def build_obj(bug_id) -> dict:
     return data
 
 
-def check_existing_entries(bug_id) -> list:
+def check_for_duplicates(bug_id: str) -> list:
     folder = Path(DATA_PATH)
     files = [f for f in folder.iterdir() if any(f.match(p) for p in YAML_FILE_EXT)]
+    duplicates = []
 
-    for file in files:
-        with open(file, 'r') as stream:
+    for file_path in files:
+        with open(file_path, 'r') as stream:
             try:
                 contents = yaml.safe_load(stream)
-                # Check the first item in references -> platform_issues list to see if there is a match
+                # Check references -> platform_issues list to see if there is a duplicate
                 if "references" in contents and "platform_issues" in contents["references"]:
-                    if contents["references"]["platform_issues"][0] == BUGZILLA_URL + bug_id:
-                        return file
+                    for platform_url in contents["references"]["platform_issues"]:
+                        parsed = urlparse(platform_url)
+                        url = parsed._replace(fragment="").geturl()
+
+                        if url == BUGZILLA_URL + bug_id:
+                            duplicates.append(str(file_path))
 
             except yaml.YAMLError as exc:
-                print(exc)
+                logger.error(exc)
+
+    return duplicates
 
 
-def build_yml(bug_id) -> None:
-    existing_entry = check_existing_entries(bug_id)
+def build_yml(bug_id: str) -> None:
+    duplicates = check_for_duplicates(bug_id)
 
-    if existing_entry:
-        print(f"A knowledge base entry for this bug has been found. Please see `{existing_entry}` for more details.")
+    if duplicates:
+        logger.error(
+            f"A duplicate bug url has been found in {','.join(duplicates)}"
+        )
         return
 
     data = build_obj(bug_id)
@@ -87,12 +101,12 @@ def build_yml(bug_id) -> None:
     path = f"{DATA_PATH}/{filename}.yml"
 
     if os.path.exists(path):
-        print(f"A file with the same name already exists: `{path}`, please edit it instead.")
+        logger.error(f"A file with the same name already exists: `{path}`, please edit it instead.")
         return
 
     with open(path, 'w') as f:
         yaml.dump(data, f, sort_keys=False, default_flow_style=False)
-        print(f"{filename}.yml file was created for bug {bug_id} ({title})")
+        logger.info(f"{filename}.yml file was created for bug {bug_id} ({title})")
 
 
 def main() -> None:
