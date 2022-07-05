@@ -4,3 +4,5 @@
 
 # Build output from the kbcheck tool
 target/
+
+.mypy_cache/
