@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "Window.sidebar removed"
+severity: normal
+tags:
+  - dom
+  - sidebar
+  - browser-sniffing
+  - nonstandard
+
+symptoms:
+  - "window.sidebar is undefined"
+
+solutions:
+  notes:
+    - "Set pref `dom.window.sidebar.enabled` to `true` in order to test"
+
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/11622
+    - https://github.com/webcompat/web-bugs/issues/11622
+    - https://github.com/webcompat/web-bugs/issues/55685
+    - https://github.com/webcompat/web-bugs/issues/67848
+    - https://github.com/webcompat/web-bugs/issues/106830
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1428302
