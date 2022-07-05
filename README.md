@@ -11,6 +11,7 @@ Please note that this is still an early **work in progress**, and everything in 
 ## Additional information
 
 - [Criteria for the `severity` and `user_base_impact` fields](./docs/severity-and-impact.md).
+- [Script to generate a yml file for a provided bugzilla bug](./docs/generate-yml.md)
 
 ## License
 
