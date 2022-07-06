@@ -1,0 +1,34 @@
+title: "Increase sizes to accommodate spanning items crossing flexible tracks"
+severity: normal
+user_base_impact: large
+tags:
+  - css
+  - grid
+  - interop2022
+
+symptoms:
+  - "Grid item is too wide and overlaps other elements to the right of it."
+  - "Site doesn't fit the screen on mobile due to one of its elements overflowing the screen."
+
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1743614-storytel.com-flex-min-width.css
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1768243-cloud.google.com-allow-table-scrolling.css
+  workarounds:
+    - "Add `min-width: 0` to the affected grid item (child element of an element with `display: grid;`)."
+
+references:
+  breakage:
+    - https://webcompat.com/issues/51224
+    - https://webcompat.com/issues/48863
+    - https://webcompat.com/issues/88752
+    - https://webcompat.com/issues/84331
+    - https://webcompat.com/issues/83097
+    - https://webcompat.com/issues/103328
+    - https://webcompat.com/issues/102601
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1530097
+  testcases:
+    - https://bug1730965.bmoattachments.org/attachment.cgi?id=9250592
+    - https://wpt.fyi/results/css/css-grid/layout-algorithm/flex-and-intrinsic-sizes-002.html
+
