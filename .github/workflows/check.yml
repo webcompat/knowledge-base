@@ -26,4 +26,4 @@ jobs:
         with:
           toolchain: stable
       - name: "Check"
-        run: cargo run --release -p kbcheck
+        run: cargo run --release -p kbcheck -- validate
