@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
-use kbcheck::validate;
+use kbcheck::{data, validate};
+use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
 #[derive(Parser)]
@@ -14,6 +15,8 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
+    /// Print all tags currently used
+    Tags,
     /// Validate data files against schema
     Validate,
 }
@@ -22,6 +25,37 @@ enum CommandStatus {
     Ok,
     Failure,
     UnexpectedError,
+}
+
+fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>, data::DataError> {
+    let mut tags = BTreeMap::new();
+    for entry in data::load_all(root_path)?.values() {
+        for tag in entry.tags.iter() {
+            let canonical_tag = tag.to_lowercase();
+            if !tags.contains_key(&canonical_tag) {
+                tags.insert(canonical_tag.clone(), (tag.clone(), 0));
+            }
+            tags.get_mut(&canonical_tag).expect("Tag should exist").1 += 1;
+        }
+    }
+    Ok(tags)
+}
+
+fn tags(root_path: &Path) -> CommandStatus {
+    match get_tags(root_path) {
+        Ok(tags) => {
+            let mut all_tags = tags.values().collect::<Vec<_>>();
+            all_tags.sort();
+            for (name, count) in all_tags.iter() {
+                println!("{}:{}", name, count);
+            }
+            CommandStatus::Ok
+        }
+        Err(err) => {
+            println!("{}", err);
+            CommandStatus::UnexpectedError
+        }
+    }
 }
 
 fn validate(root_path: &Path) -> CommandStatus {
@@ -48,6 +82,7 @@ fn run() -> CommandStatus {
     let cli = Cli::parse();
     let root_path = cli.root_path.unwrap_or_default();
     match &cli.command {
+        Commands::Tags => tags(&root_path),
         Commands::Validate => validate(&root_path),
     }
 }
