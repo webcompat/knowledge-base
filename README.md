@@ -13,6 +13,13 @@ Please note that this is still an early **work in progress**, and everything in 
 - [Criteria for the `severity` and `user_base_impact` fields](./docs/severity-and-impact.md).
 - [Script to generate a yml file for a provided bugzilla bug](./docs/generate-yml.md)
 
+## Tooling
+
+The `kbcheck` tool is designed to help interact with the knowledge base. It's written in [Rust](https://www.rust-lang.org/) and is most easily used by running `cargo run` in the checkout. The following commands are available:
+
+- `tags`: Print a list of tags currently used in knowledge base entries.
+- `validate`: Validate the knowledge base entries against the schema and additional lint rules.
+
 ## License
 
 [Creative Commons Public Domain Dedication (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/).
