@@ -1,5 +1,22 @@
+use clap::{Parser, Subcommand};
 use kbcheck::validate;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
+
+#[derive(Parser)]
+#[clap(author, version, about, long_about = None)]
+#[clap(propagate_version = true)]
+struct Cli {
+    #[clap(short, long, value_parser)]
+    root_path: Option<PathBuf>,
+    #[clap(subcommand)]
+    command: Commands,
+}
+
+#[derive(Subcommand)]
+enum Commands {
+    /// Validate data files against schema
+    Validate,
+}
 
 enum CommandStatus {
     Ok,
@@ -7,9 +24,8 @@ enum CommandStatus {
     UnexpectedError,
 }
 
-fn run() -> CommandStatus {
-    let root_path = PathBuf::new();
-    match validate::validate(&root_path) {
+fn validate(root_path: &Path) -> CommandStatus {
+    match validate::validate(root_path) {
         Ok(errors) => {
             if !errors.is_empty() {
                 println!("Validation failed");
@@ -25,6 +41,14 @@ fn run() -> CommandStatus {
             println!("{}", err);
             CommandStatus::UnexpectedError
         }
+    }
+}
+
+fn run() -> CommandStatus {
+    let cli = Cli::parse();
+    let root_path = cli.root_path.unwrap_or_default();
+    match &cli.command {
+        Commands::Validate => validate(&root_path),
     }
 }
 
