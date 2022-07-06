@@ -1,0 +1,24 @@
+title: "Using <embed> for PDFs does not result in a download on Android"
+severity: high
+user_base_impact: small
+
+tags:
+  - android
+  - pdf
+  - embed
+
+symptoms:
+  - "Empty content area or empty page whereas a button to download pdf is expected."
+  - "No prompt to download pdf on Android."
+  - "Impossible to view pdf on Android if it's within <embed> tag."
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1655525#c0
+    - https://github.com/webcompat/web-bugs/issues/55689
+    - https://github.com/webcompat/web-bugs/issues/57735
+    - https://github.com/webcompat/web-bugs/issues/88306
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1655525
+  testcases:
+    - https://bug1655525.bmoattachments.org/attachment.cgi?id=9166460
