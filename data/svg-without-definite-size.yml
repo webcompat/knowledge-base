@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "SVG without width/height specified has different intrinsic-sizing behavior"
+severity: high
+user_base_impact: large
+tags:
+  - css
+  - svg
+  - icon
+
+symptoms:
+  - "Icon is too big, covering up the rest of the content."
+  - "Svg element without width or height specified overlaps other elements."
+  - "Icon has zero width and height therefore is invisible."
+
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1751022-chotot.com-image-width-fix.css
+
+  workarounds:
+    - "Setting a definite width or height / min-width or min-height for the affected svg icon."
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521882#c0
+    - https://webcompat.com/issues/24694
+    - https://webcompat.com/issues/44773
+    - https://webcompat.com/issues/52604
+    - https://webcompat.com/issues/55337
+    - https://webcompat.com/issues/59838
+    - https://webcompat.com/issues/63837
+    - https://webcompat.com/issues/67325
+    - https://webcompat.com/issues/103397
+    - https://webcompat.com/issues/55924
+    - https://webcompat.com/issues/95541
+    - https://webcompat.com/issues/100401
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1741528
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521882
+  testcases:
+    - https://bug1521882.bmoattachments.org/attachment.cgi?id=9038313
