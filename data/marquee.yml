@@ -1,6 +1,7 @@
 # yaml-language-server: $schema=../schemas/entry.schema.json
 title: "Marquee should be able to use smoothscroll code"
 severity: normal
+user_base_impact: medium
 tags:
   - layout
   - marquee
@@ -37,4 +38,4 @@ references:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=306344
     - https://bugzilla.mozilla.org/buglist.cgi?short_desc_type=allwordssubstr&short_desc=marquee&resolution=---&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Layout&product=Core&list_id=16137819
   testcases:
-    - https://github.com/webcompat/web-bugs/issues/105973
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=306344#c15
