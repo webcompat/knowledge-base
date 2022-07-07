@@ -18,3 +18,4 @@ In the `user_base_impact` we keep track of the estimated reach of an issue:
 - `large`: affecting very popular sites.
 - `medium`: affecting some slightly popular sites, or a larger number of small sites.
 - `small`: affecting only small sites.
+- `unknown`: it isn't clear what is the number of affected users at the moment.

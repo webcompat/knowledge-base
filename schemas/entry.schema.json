@@ -18,7 +18,7 @@
     "user_base_impact": {
       "description": "Estimation of how many users are affected",
       "type": "string",
-      "enum": ["small", "medium", "large"]
+      "enum": ["small", "medium", "large", "unknown"]
     },
     "tags": {
       "description": "List of tags to attached to this issue",
