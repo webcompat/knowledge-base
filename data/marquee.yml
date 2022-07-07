@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "Marquee should be able to use smoothscroll code"
+severity: normal
+user_base_impact: medium
+tags:
+  - layout
+  - marquee
+
+symptoms:
+  - "Marquee text is not moving smoothly"
+  - "Marquee isn't working properly"
+
+solutions:
+  workarounds:
+    - "Web developers should use CSS animations instead."
+
+references:
+  breakage:
+    - https://webcompat.com/issues/3551
+    - https://webcompat.com/issues/3607
+    - https://webcompat.com/issues/3631
+    - https://webcompat.com/issues/10144
+    - https://webcompat.com/issues/10768
+    - https://webcompat.com/issues/10725
+    - https://webcompat.com/issues/11740
+    - https://webcompat.com/issues/11848
+    - https://webcompat.com/issues/12124
+    - https://webcompat.com/issues/11595
+    - https://webcompat.com/issues/11870
+    - https://webcompat.com/issues/13391
+    - https://webcompat.com/issues/13334
+    - https://webcompat.com/issues/39820
+    - https://webcompat.com/issues/52867
+    - https://webcompat.com/issues/53807
+    - https://webcompat.com/issues/66859
+    - https://webcompat.com/issues/58604
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=306344
+    - https://bugzilla.mozilla.org/buglist.cgi?short_desc_type=allwordssubstr&short_desc=marquee&resolution=---&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Layout&product=Core&list_id=16137819
+  testcases:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=306344#c15
