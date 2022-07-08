@@ -1,0 +1,46 @@
+title: Missing window.print support in GeckoView
+severity: normal
+user_base_impact: large
+tags:
+  - android
+  - print
+
+symptoms:
+  - Users are unable to print content from websites
+
+console_messages:
+  - "Uncaught TypeError: window.print is not a function"
+
+references:
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1659818
+    - https://github.com/mozilla-mobile/fenix/issues/13214
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/59618
+    - https://github.com/webcompat/web-bugs/issues/59719
+    - https://github.com/webcompat/web-bugs/issues/60821
+    - https://github.com/webcompat/web-bugs/issues/67173
+    - https://github.com/webcompat/web-bugs/issues/68854
+    - https://github.com/webcompat/web-bugs/issues/69114
+    - https://github.com/webcompat/web-bugs/issues/71164
+    - https://github.com/webcompat/web-bugs/issues/73792
+    - https://github.com/webcompat/web-bugs/issues/74579
+    - https://github.com/webcompat/web-bugs/issues/77486
+    - https://github.com/webcompat/web-bugs/issues/80978
+    - https://github.com/webcompat/web-bugs/issues/81762
+    - https://github.com/webcompat/web-bugs/issues/84076
+    - https://github.com/webcompat/web-bugs/issues/90726
+    - https://github.com/webcompat/web-bugs/issues/104026
+    - https://github.com/webcompat/web-bugs/issues/104528
+    - https://github.com/webcompat/web-bugs/issues/105049
+    - https://github.com/webcompat/web-bugs/issues/106194
+    - https://github.com/webcompat/web-bugs/issues/106301
+    - https://github.com/webcompat/web-bugs/issues/106435
+    - https://github.com/webcompat/web-bugs/issues/106905
+    - https://github.com/webcompat/web-bugs/issues/107032
+  testcases:
+    - https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_print
+
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/b7b94b61da97cc2acf887da1ba781d70b4772ca4/src/injections/js/bug1724764-amextravel.com-window-print.js
