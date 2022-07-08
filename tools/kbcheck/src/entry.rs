@@ -16,6 +16,7 @@ pub enum UserBaseImpact {
     Large,
     Medium,
     Small,
+    Unknown,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]
