@@ -106,6 +106,22 @@
             "type": "string",
             "format": "uri-reference"
           }
+        },
+        "standards_positions": {
+          "description": "List of URLs pointing to positions from Mozilla and other vendors on open Web and Web-related specifications submitted to standards bodies like the IETF, W3C, and Ecma TC39.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "standards_discussions": {
+          "description": "List of URLs pointing to discussions on specifications or proposals submitted to standards bodies like the IETF, W3C, and Ecma TC39.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       }
     }
