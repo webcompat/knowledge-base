@@ -1,0 +1,34 @@
+title: "Support mkv|matroska|video/x-matroska in Firefox"
+severity: high
+user_base_impact: medium
+tags:
+  - media
+  - mkv
+
+symptoms:
+  - "Video doesn't play and player controls don't appear"
+  - '"No video with supported format and MIME type found" error is displayed'
+  - '"The media could not be loaded, either because the server or network failed or because the format is not supported" error is displayed'
+console_messages:
+  - "HTTP “Content-Type” of “video/x-matroska” is not supported. Load of media resource https://player.odycdn.com/api/v4/streams/free/sadomona/4123c18d892b0dd161e2922c5f5803fb248544bd/5a4b90 failed."
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1422891#c0
+    - https://webcompat.com/issues/16213
+    - https://webcompat.com/issues/23080
+    - https://webcompat.com/issues/30558
+    - https://webcompat.com/issues/68219
+    - https://webcompat.com/issues/76678
+    - https://webcompat.com/issues/89932
+    - https://github.com/webcompat/web-bugs/issues/94987
+    - https://github.com/webcompat/web-bugs/issues/99584
+    - https://github.com/webcompat/web-bugs/issues/99674
+    - https://github.com/webcompat/web-bugs/issues/92002
+    - https://github.com/webcompat/web-bugs/issues/105276
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1422891
+    - https://bugs.chromium.org/p/chromium/issues/detail?id=967100
+  telemetry:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1429986
+    - https://telemetry.mozilla.org/new-pipeline/evo.html#!aggregates=False%2520percentage!True%2520percentage!Invalid%2520value%2520percentage&cumulative=0&end_date=2018-10-02&include_spill=0&keys=!__none__!__none__&max_channel_version=nightly%252F64&measure=MEDIA_MKV_CANPLAY_REQUESTED&min_channel_version=nightly%252F61&processType=*&product=Firefox!Fennec&sanitize=1&sort_keys=submissions&start_date=2018-09-04&trim=1&use_submission_date=0
