@@ -20,6 +20,10 @@
       "type": "string",
       "enum": ["small", "medium", "large", "unknown"]
     },
+    "notes": {
+      "description": "Additional information about the priority of the issue, including reasoning for the `severity` and `user_base_impact` settings, where that isn't obvious.",
+      "type": "string"
+    },
     "tags": {
       "description": "List of tags to attached to this issue",
       "type": "array",
