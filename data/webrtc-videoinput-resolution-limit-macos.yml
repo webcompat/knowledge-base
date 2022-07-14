@@ -1,0 +1,18 @@
+title: VideoInput on macOS is limited to 720p
+severity: low
+user_base_impact: unknown
+tags:
+  - videoinput
+  - webcam
+  - webrtc
+
+symptoms:
+  - Users on macOS are unable to use WebRTC applications with their webcams set to a resolution higher than 720p
+
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/107337
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1681334
+  testcases:
+    - https://mozilla-webcompat-107337.glitch.me
