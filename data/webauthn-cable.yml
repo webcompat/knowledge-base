@@ -1,0 +1,22 @@
+title: Missing support for caBLE in WebAuthn
+tags:
+  - webauthn
+
+severity: high
+user_base_impact: small
+
+notes: |
+  Even though this is affecting Google's sign in process, the issue is only
+  affecting users who want to add their Android phone as a security hardware
+  token, and the assumption is that this is a relatively small subset of users,
+  so the user_base_impact is small.
+
+symptoms:
+  - Users are unable to use Google's "Built-in security key" on Android to sign into an account
+
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/101503
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1768622
