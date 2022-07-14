@@ -1,0 +1,24 @@
+title: Missing support for CTAP2/FIDO2 in WebAuthn
+tags:
+  - webauthn
+
+severity: high
+user_base_impact: small
+
+notes: |
+  Even though this is affecting big properties, the issue is only affecting
+  users who want to set up 2fa with a hardware token, and the assumption is that
+  this is a relatively small subset of users, so the user_base_impact is small.
+
+symptoms:
+  - Users are unable to add a hardware security token to an account
+  - Users are unable to use Windows Hello to sign into an account
+
+references:
+  breakage:
+    - https://github.com/webcompat/web-bugs/issues/42033
+    - https://github.com/webcompat/web-bugs/issues/101753
+    - https://github.com/webcompat/web-bugs/issues/103230
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1530370
