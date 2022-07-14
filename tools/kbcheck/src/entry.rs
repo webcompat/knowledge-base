@@ -49,6 +49,7 @@ pub struct Entry {
     pub title: String,
     pub severity: Severity,
     pub user_base_impact: Option<UserBaseImpact>,
+    pub notes: Option<String>,
     #[serde(default)]
     pub tags: Vec<String>,
     #[serde(default)]
