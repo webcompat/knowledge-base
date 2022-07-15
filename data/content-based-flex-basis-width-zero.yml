@@ -1,0 +1,28 @@
+title: "content-based 'flex-basis' produces a width of 0, in case where descendant with aspect ratio and resolvable percent height should prop it up"
+severity: normal
+user_base_impact: unknown
+
+tags:
+  - css
+  - flexbox
+
+symptoms:
+  - "An image in a gallery or a slider has zero width and therefore invisible"
+  - "The site is using `height: 0px;` and large percent-valued padding-bottom or padding-top on the parent element of the slider image"
+
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1774490-rainews.it-gallery-fix.css
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1748455-reddit.com-gallery-image-width-fix.css
+  workarounds:
+    - "Adding pixel-valued padding instead of percent-valued or setting `height: auto` for the affected element."
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1748339#c0
+    - https://webcompat.com/issues/97271
+    - https://webcompat.com/issues/105402
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1748339
+  testcases:
+    - https://bug1748339.bmoattachments.org/attachment.cgi?id=9281298
