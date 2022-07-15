@@ -1,0 +1,27 @@
+title: "Site breakage related to reaching LocalStorage limit"
+severity: high
+user_base_impact: unknown
+notes: "This is affecting some users of a popular game Wordle on desktop and mobile, but the user impact is unknown at the moment"
+
+tags:
+  - localStorage
+
+symptoms:
+  - "Page doesn't load any content and remains blank"
+
+console_messages:
+  - "Uncaught DOMException: The quota has been exceeded"
+  - 'Uncaught Exception { name: "NS_ERROR_STORAGE_CONSTRAINT" }'
+
+solutions:
+  workarounds:
+    - "Clearing cookies and site data for the affected origin or clearing Local Storage in the devtools Storage tab"
+    - "While clearing site data is a possible workaround, general users might not know about it as a possible way of resolving the problem"
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1755206#c0
+    - https://github.com/webcompat/web-bugs/issues/104593
+    - https://support.mozilla.org/en-US/questions/1367729
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1755206
