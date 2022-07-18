@@ -1,6 +1,7 @@
 use crate::data::{iter_data_files, read_json, EntriesMap};
 use crate::entry::Entry;
 use jsonschema::JSONSchema;
+use miette::Diagnostic;
 use serde::de::{Deserialize, IntoDeserializer};
 use std::collections::BTreeMap;
 use std::fmt::Display;
@@ -11,14 +12,10 @@ use url::Url;
 
 pub type Failures = Vec<ValidationFailure>;
 
-#[derive(Error, Debug)]
-enum ValidateError {
-    #[error("Load failed")]
-    DataError(
-        #[from]
-        #[source]
-        crate::data::DataError,
-    ),
+#[derive(Error, Debug, Diagnostic)]
+pub enum ValidateError {
+    #[error(transparent)]
+    DataError(#[from] crate::data::DataError),
     #[error("Schema compile failed")]
     SchemaError,
 }
@@ -183,7 +180,7 @@ fn global_validate(entries: EntriesMap) -> Failures {
 }
 
 /// Validate knowledge base entries
-pub fn validate(root_path: &Path) -> Result<Failures, Box<dyn std::error::Error>> {
+pub fn validate(root_path: &Path) -> Result<Failures, ValidateError> {
     let mut errors: Failures = Vec::new();
     let (entries, file_errors) = load_and_validate_files(root_path)?;
     errors.extend(file_errors.into_iter());
