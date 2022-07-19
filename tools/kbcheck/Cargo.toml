@@ -15,3 +15,4 @@ walkdir = "2"
 url={ version = "2", features = ["serde"] }
 thiserror = "1"
 clap = { version = "3", features = ["derive"] }
+reqwest="0.11"
