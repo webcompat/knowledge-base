@@ -1,6 +1,6 @@
 use clap::{Parser, Subcommand};
-use kbcheck::{data, validate};
-use miette::{Diagnostic, IntoDiagnostic, Result};
+use kbcheck::{data, updates, validate};
+use miette::{Diagnostic, Result};
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
@@ -20,6 +20,7 @@ enum Commands {
     Tags,
     /// Validate data files against schema
     Validate,
+    Updates,
 }
 
 fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>> {
@@ -66,13 +67,26 @@ fn validate(root_path: &Path) -> Result<()> {
     }
 }
 
+fn updates(root_path: &Path) -> Result<()> {
+    let updates = updates::check_updates(root_path)?;
+    if !updates.is_empty() {
+        for (path, updates) in updates.iter() {
+            println!("{}", path.display());
+            for update in updates.iter() {
+                println!("    {}\n      Try: {}", update.error, update.suggestion);
+            }
+        }
+    }
+    Ok(())
+}
+
 fn main() -> Result<()> {
     let cli = Cli::parse();
     let root_path = cli.root_path.unwrap_or_default();
     match &cli.command {
         Commands::Tags => tags(&root_path),
         Commands::Validate => validate(&root_path),
-        Commands::Bug { path } => bug(&path),
+        Commands::Updates => updates(&root_path),
     }?;
     Ok(())
 }
