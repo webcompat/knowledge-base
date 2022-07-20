@@ -1,0 +1,26 @@
+title: "text-align: justify; doesn't work together with white-space: pre-wrap;"
+severity: normal
+user_base_impact: unknown
+notes: "This is affecting Office 365 Word online editor, math editor on mathcha.io and potentially others."
+
+tags:
+  - css
+  - text
+  - justify
+  - editor
+
+symptoms:
+  - "When editing text in an online editor, justify option is is not available or not working"
+  - "Using `text-align: justify;` with `white-space: pre-wrap` or `break-spaces` doesn't justify text"
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1253840#c0
+    - https://github.com/webcompat/web-bugs/issues/86890
+    - https://github.com/webcompat/web-bugs/issues/104271
+    - https://support.mozilla.org/en-US/questions/1303902
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1253840
+  testcases:
+    - https://bugzilla.mozilla.org/attachment.cgi?id=8727082
+    - https://wpt.fyi/results/css/CSS2/text/text-align-white-space-003.xht
