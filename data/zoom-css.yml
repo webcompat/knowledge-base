@@ -1,5 +1,6 @@
 title: "Firefox doesn't support Internet Explorer zoom css property"
 severity: high
+user_base_impact: large
 tags:
   - css
   - zoom
@@ -14,54 +15,247 @@ console_messages:
   - "This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”."
 
 solutions:
-  interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1570328-developer-apple.com-transform-scale.css
-  notes:
+   notes:
     - "Experiment with implementing `zoom` as a transform + transform-origin shorthand in https://bugzilla.mozilla.org/show_bug.cgi?id=1589766."
     - "The experiment was disabled in https://bugzilla.mozilla.org/show_bug.cgi?id=1599324 due to breakage on sites that were using `zoom` together with `transform`."
     - "A console warning message about using `zoom` property was added in https://bugzilla.mozilla.org/show_bug.cgi?id=1582374."
 
-  workarounds:
+   workarounds:
     - "Web Developers can use `transform: scale()` + `transform-origin: 0 0` instead of `zoom`."
 
 references:
   breakage:
-    - https://webcompat.com/issues/1118
-    - https://webcompat.com/issues/952
-    - https://webcompat.com/issues/1551
-    - https://webcompat.com/issues/2103
-    - https://webcompat.com/issues/3215
-    - https://webcompat.com/issues/3789
-    - https://webcompat.com/issues/7900
-    - https://webcompat.com/issues/11578
-    - https://webcompat.com/issues/16456
-    - https://webcompat.com/issues/25236
-    - https://webcompat.com/issues/26009
-    - https://webcompat.com/issues/28443
-    - https://webcompat.com/issues/34310
-    - https://webcompat.com/issues/36693
-    - https://webcompat.com/issues/38470
-    - https://github.com/webcompat/web-bugs/issues/35410
-    - https://github.com/webcompat/web-bugs/issues/36317
-    - https://github.com/webcompat/web-bugs/issues/38330
-    - https://github.com/webcompat/web-bugs/issues/38331
-    - https://webcompat.com/issues/41889
-    - https://webcompat.com/issues/48988
-    - https://github.com/webcompat/web-bugs/issues/47748
-    - https://webcompat.com/issues/67804
-    - https://webcompat.com/issues/70232
-    - https://webcompat.com/issues/85044
-    - https://github.com/webcompat/web-bugs/issues/80401
-    - https://github.com/webcompat/web-bugs/issues/99060
-    - https://github.com/webcompat/web-bugs/issues/75053
-    - https://github.com/webcompat/web-bugs/issues/101298
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1081494
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1531041
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1544649
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1690281
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1750047
-  platform_issues:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=390936
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1589766
+    - url: https://webcompat.com/issues/1118
+      site: http://www.tokyometro.jp/sp/
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2015-07-14
+
+    - url: https://webcompat.com/issues/952
+      site: https://www.circleksunkus.jp
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2017-11-06
+
+    - url: https://webcompat.com/issues/1551
+      site: http://leftoversalad.tumblr.com/post/126724812097/programming-languages-personified
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2019-08-23
+
+    - url: https://webcompat.com/issues/2103
+      site: http://oliviawhen.tumblr.com/post/136358485941/i-did-some-physical-therapy-for-my-wrist-this-year
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2019-08-05
+
+    - url: https://webcompat.com/issues/3215
+      site: https://www.init.de/de
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2016-09-20
+
+    - url: https://webcompat.com/issues/3789
+      site: https://weathernews.jp/web910/
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2016-12-02
+
+    - url: https://webcompat.com/issues/7900
+      site: http://www.quikr.com/Escrow/nationwide/bazaar
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2017-07-05
+
+    - url: https://webcompat.com/issues/11578
+      site: http://quiz.chinatimes.com/20170828002261-320406
+      platform:
+        - all
+      resolution: site_changed
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2017-11-17
+
+    - url: https://webcompat.com/issues/16456
+      site: http://newpost.gr/
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2018-11-16
+
+    - url: https://webcompat.com/issues/25236
+      site: https://www.homedepot.com/p/Home-Decorators-Collection-1-Light-Antique-Bronze-Wall-Sconce-with-Clear-Glass-Shade-7951HDCBZ/301425646
+      platform:
+        - desktop
+      resolution: site_changed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2019-06-12
+
+    - url: https://webcompat.com/issues/26009
+      site: https://helps.ameba.jp/rules/
+      platform:
+        - mobile
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/28443
+      site: https://developer.apple.com/library/archive/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#/apple_ref/doc/uid/TP40008793-CH1-SW1
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1570328-developer-apple.com-transform-scale.css
+      impact: site_broken
+      affects_users: some
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/34310
+      site: http://game.granbluefantasy.jp/
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/3d98d47bece1cf3cceafd1167fdc9d4d995c38d1/src/data/ua_overrides.js#L571
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/36693
+      site: https://www.decathlon.ch/
+      platform:
+        - all
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2019-08-15
+
+    - url: https://webcompat.com/issues/38470
+      site: http://www.mori-m-foundation.or.jp/english/ius2/gpci2/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/41889
+      site: https://alphynix.tumblr.com/
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2019-10-18
+
+    - url: https://webcompat.com/issues/48988
+      site: https://www.wowow.co.jp/support/subscribe/regist_entry.php
+      platform:
+        - mobile
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/47748
+      site: https://cp-algorithms.com/
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2020-04-09
+
+    - url: https://webcompat.com/issues/67804
+      site: https://www.openarch.nl/nha:dc7cafa4-2fdc-4376-8478-19106eee5eef
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/70232
+      site: https://dashingdon.com/play/wildelight/mind-blind/mygame/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/85044
+      site: https://salah.com/
+      platform:
+        - mobile
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/80401
+      site: http://ask8ball.net/
+      platform:
+        - all
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/99060
+      site: https://www.seedr.cc/
+      platform:
+        - mobile
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/75053
+      site: https://bonk.io/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2022-07-20
+
+    - url: https://webcompat.com/issues/101298
+      site: https://www.seedr.cc/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1531041
+      site: https://www.qq.com/
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-07-20
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1690281
+      site: https://www.xda-developers.com/
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2021-04-13
+
   testcases:
     - https://github.com/web-platform-tests/wpt/pull/25314
