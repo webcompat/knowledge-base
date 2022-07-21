@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=../schemas/entry.schema.json
+title: "Missing nonstandard location.ancestorOrigins"
+severity: normal
+user_base_impact: small
+tags:
+  - dom
+  - location
+  - ancestorOrigins
+
+console_messages:
+  - "location.ancestorOrigins is undefined"
+
+references:
+  breakage:
+    - https://webcompat.com/issues/63419
+    - https://webcompat.com/issues/80275
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1085214
+  telemetry:
+    - https://chromestatus.com/metrics/feature/timeline/popularity/823
+  standards_positions:
+    - https://github.com/mozilla/standards-positions/issues/466
