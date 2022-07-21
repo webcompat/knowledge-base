@@ -41,6 +41,10 @@ pub struct References {
     pub telemetry: Vec<Url>,
     #[serde(default)]
     pub testcases: Vec<String>, // TODO: how to handle relative URLs?
+    #[serde(default)]
+    pub standards_positions: Vec<Url>,
+    #[serde(default)]
+    pub standards_discussions: Vec<Url>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
