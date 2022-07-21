@@ -1,0 +1,31 @@
+title: "Absolutely positioned inline-block (or inline) element with floating nextSibling
+  and auto 'left' is positioned to the right of the float"
+
+severity: normal
+user_base_impact: medium
+
+tags:
+  - css
+  - float
+
+symptoms:
+    - "Attempting to check a custom styled checkbox element has no effect"
+    - "Text content or element is shifted to the right, possibly invisible"
+
+solutions:
+  interventions:
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/261bfd70cfd0dc80026e194073480e0ced1bcf69/src/injections/css/bug1765947-veniceincoming.com-left-fix.css
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/261bfd70cfd0dc80026e194073480e0ced1bcf69/src/injections/css/bug1644830-missingmail.usps.com-checkboxes-not-visible.css
+
+references:
+  breakage:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=997189#c0
+    - https://webcompat.com/issues/22867
+    - https://webcompat.com/issues/29886
+    - https://webcompat.com/issues/53950
+    - https://webcompat.com/issues/102133
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=997189
+  testcases:
+    - https://bug997189.bmoattachments.org/attachment.cgi?id=8408177
+    - https://bug997189.bmoattachments.org/attachment.cgi?id=9271658
