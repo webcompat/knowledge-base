@@ -1,5 +1,6 @@
 title: "Firefox doesn't support Internet Explorer zoom css property"
 severity: high
+user_base_impact: large
 tags:
   - css
   - zoom
