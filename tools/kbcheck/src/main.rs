@@ -1,5 +1,6 @@
 use clap::{Parser, Subcommand};
-use kbcheck::{data, validate};
+use kbcheck::{data, updates, validate};
+use miette::{Diagnostic, Result};
 use std::collections::BTreeMap;
 use std::path::{Path, PathBuf};
 
@@ -19,15 +20,10 @@ enum Commands {
     Tags,
     /// Validate data files against schema
     Validate,
+    Updates,
 }
 
-enum CommandStatus {
-    Ok,
-    Failure,
-    UnexpectedError,
-}
-
-fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>, data::DataError> {
+fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>> {
     let mut tags = BTreeMap::new();
     for entry in data::load_all(root_path)?.values() {
         for tag in entry.tags.iter() {
@@ -41,57 +37,56 @@ fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>, data::D
     Ok(tags)
 }
 
-fn tags(root_path: &Path) -> CommandStatus {
-    match get_tags(root_path) {
-        Ok(tags) => {
-            let mut all_tags = tags.values().collect::<Vec<_>>();
-            all_tags.sort();
-            for (name, count) in all_tags.iter() {
-                println!("{}:{}", name, count);
-            }
-            CommandStatus::Ok
-        }
-        Err(err) => {
+fn tags(root_path: &Path) -> Result<()> {
+    let tags = get_tags(root_path)?;
+    let mut all_tags = tags.values().collect::<Vec<_>>();
+    all_tags.sort();
+    for (name, count) in all_tags.iter() {
+        println!("{}:{}", name, count);
+    }
+    Ok(())
+}
+
+#[derive(thiserror::Error, Debug, Diagnostic)]
+pub enum ValidateError {
+    #[error("Validation failed")]
+    ValidationFailed,
+    #[error(transparent)]
+    UnexpectedError(#[from] validate::ValidateError),
+}
+
+fn validate(root_path: &Path) -> Result<()> {
+    let errors = validate::validate(root_path)?;
+    if !errors.is_empty() {
+        for err in errors {
             println!("{}", err);
-            CommandStatus::UnexpectedError
         }
+        Err(ValidateError::ValidationFailed.into())
+    } else {
+        Ok(())
     }
 }
 
-fn validate(root_path: &Path) -> CommandStatus {
-    match validate::validate(root_path) {
-        Ok(errors) => {
-            if !errors.is_empty() {
-                println!("Validation failed");
-                for err in errors {
-                    println!("{}", err);
-                }
-                CommandStatus::Failure
-            } else {
-                CommandStatus::Ok
+fn updates(root_path: &Path) -> Result<()> {
+    let updates = updates::check_updates(root_path)?;
+    if !updates.is_empty() {
+        for (path, updates) in updates.iter() {
+            println!("{}", path.display());
+            for update in updates.iter() {
+                println!("    {}\n      Try: {}", update.error, update.suggestion);
             }
         }
-        Err(err) => {
-            println!("{}", err);
-            CommandStatus::UnexpectedError
-        }
     }
+    Ok(())
 }
 
-fn run() -> CommandStatus {
+fn main() -> Result<()> {
     let cli = Cli::parse();
     let root_path = cli.root_path.unwrap_or_default();
     match &cli.command {
         Commands::Tags => tags(&root_path),
         Commands::Validate => validate(&root_path),
-    }
-}
-
-fn main() {
-    let exit_code = match run() {
-        CommandStatus::Ok => 0,
-        CommandStatus::Failure => 1,
-        CommandStatus::UnexpectedError => 2,
-    };
-    std::process::exit(exit_code);
+        Commands::Updates => updates(&root_path),
+    }?;
+    Ok(())
 }

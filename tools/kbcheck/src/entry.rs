@@ -23,11 +23,11 @@ pub enum UserBaseImpact {
 #[serde(deny_unknown_fields)]
 pub struct Solutions {
     #[serde(default)]
-    interventions: Vec<Url>,
+    pub interventions: Vec<Url>,
     #[serde(default)]
-    notes: Vec<String>,
+    pub notes: Vec<String>,
     #[serde(default)]
-    workarounds: Vec<String>,
+    pub workarounds: Vec<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Default)]

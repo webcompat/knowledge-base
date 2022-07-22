@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 jsonschema="0.16"
+miette={ version="5", features = ["fancy"] }
 serde="1"
 serde_json="1"
 serde_yaml="0.8"
@@ -14,3 +15,4 @@ walkdir = "2"
 url={ version = "2", features = ["serde"] }
 thiserror = "1"
 clap = { version = "3", features = ["derive"] }
+reqwest="0.11"

@@ -1,4 +1,5 @@
 use crate::entry::Entry;
+use miette::Diagnostic;
 use std::collections::BTreeMap;
 use std::fs::File;
 use std::io;
@@ -9,32 +10,16 @@ use walkdir::{self, DirEntry, WalkDir};
 
 pub type EntriesMap = BTreeMap<PathBuf, Entry>;
 
-#[derive(thiserror::Error, Debug)]
+#[derive(thiserror::Error, Debug, Diagnostic)]
 pub enum DataError {
-    #[error("Could not open file")]
-    IoError(
-        #[from]
-        #[source]
-        io::Error,
-    ),
-    #[error("JSON parsing failed")]
-    JsonParseError(
-        #[from]
-        #[source]
-        serde_json::Error,
-    ),
-    #[error("Loading YAML failed")]
-    YamlLoadError(
-        #[from]
-        #[source]
-        serde_yaml::Error,
-    ),
-    #[error("JSON parsing failed")]
-    WalkDirError(
-        #[from]
-        #[source]
-        walkdir::Error,
-    ),
+    #[error(transparent)]
+    IoError(#[from] io::Error),
+    #[error(transparent)]
+    JsonParseError(#[from] serde_json::Error),
+    #[error(transparent)]
+    YamlLoadError(#[from] serde_yaml::Error),
+    #[error(transparent)]
+    WalkDirError(#[from] walkdir::Error),
 }
 
 /// Read a path into a serde_json::Value
