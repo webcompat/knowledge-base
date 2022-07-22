@@ -82,8 +82,13 @@ fn check_missing_breakage(
     bugs_data: &BTreeMap<u64, bugzilla::Bug>,
     updates: &mut Vec<Update>,
 ) {
-    let entry_breakage =
-        BTreeSet::from_iter(entry.references.breakage.iter().filter_map(webcompat_id));
+    let entry_breakage = BTreeSet::from_iter(
+        entry
+            .references
+            .breakage
+            .iter()
+            .filter_map(|item| webcompat_id(item.url())),
+    );
     let mut bugs_see_also = BTreeSet::new();
     for bug_data in bugs_data.values() {
         bugs_see_also.extend(
@@ -124,7 +129,7 @@ pub fn check_updates(root_path: &Path) -> Result<BTreeMap<PathBuf, Vec<Update>>,
 mod test {
     use super::*;
     use crate::bugzilla::Bug;
-    use crate::entry::{Entry, References, Severity, Solutions};
+    use crate::entry::{BreakageItem, Entry, References, Severity, Solutions};
     use std::default::Default;
 
     #[test]
@@ -229,7 +234,9 @@ mod test {
             symptoms: vec![],
             console_messages: vec![],
             references: References {
-                breakage: vec![Url::parse("https://webcompat.com/issues/1234").unwrap()],
+                breakage: vec![BreakageItem::Url(
+                    Url::parse("https://webcompat.com/issues/1234").unwrap(),
+                )],
                 ..Default::default()
             },
             solutions: Solutions {
