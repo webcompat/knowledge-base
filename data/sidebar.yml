@@ -16,9 +16,37 @@ solutions:
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/11622
-    - https://github.com/webcompat/web-bugs/issues/55685
-    - https://github.com/webcompat/web-bugs/issues/67848
-    - https://github.com/webcompat/web-bugs/issues/106830
+    - url: https://github.com/webcompat/web-bugs/issues/11622
+      site: http://www.election.gov.np
+      platform:
+        - all
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/4a3094f52d561925620ac441d5c4423766ec5c29/src/webextension/injections/js/bug1472081-election.gov.np-window.sidebar-shim.js
+      impact: feature_broken
+      affects_users: all
+      resolution: site_changed
+    - url: https://github.com/webcompat/web-bugs/issues/55685
+      site:  http://www.susu09.com/forum.php
+      platform:
+        - all
+      last_reproduced: 2020-07-27
+      impact: site_broken
+      affects_users: all
+      resolution: site_fixed
+    - url: https://github.com/webcompat/web-bugs/issues/67848
+      site: https://indichords.com/
+      platform:
+        - all
+      last_reproduced: 2021-03-08
+      impact: feature_broken
+      affects_users: all
+      resolution: site_fixed
+    - url: https://github.com/webcompat/web-bugs/issues/106830
+      site: https://www.pontefractfhs.org.uk
+      platform:
+        - all
+      last_reproduced: 2022-07-09
+      impact: site_broken
+      affects_users: all
+      resolution: site_fixed
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1428302
