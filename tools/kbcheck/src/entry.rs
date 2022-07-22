@@ -34,7 +34,7 @@ pub struct Solutions {
 #[serde(deny_unknown_fields)]
 pub struct References {
     #[serde(default)]
-    pub breakage: Vec<Url>,
+    pub breakage: Vec<BreakageItem>,
     #[serde(default)]
     pub platform_issues: Vec<Url>,
     #[serde(default)]
@@ -45,6 +45,73 @@ pub struct References {
     pub standards_positions: Vec<Url>,
     #[serde(default)]
     pub standards_discussions: Vec<Url>,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum BreakageItem {
+    Url(Url),
+    Breakage(Breakage),
+}
+
+impl BreakageItem {
+    pub fn url(&self) -> &Url {
+        match self {
+            BreakageItem::Url(url) => url,
+            BreakageItem::Breakage(item) => &item.url,
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct Breakage {
+    url: Url,
+    site: Url,
+    platform: Vec<Platform>,
+    last_reproduced: Option<String>, // Date
+    intervention: Option<Url>,
+    impact: Impact,
+    affects_users: AffectsUsers,
+    resolution: Option<BreakageResolution>,
+    #[serde(default)]
+    notes: String,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum Platform {
+    All,
+    Desktop,
+    Mobile,
+    Windows,
+    Macos,
+    Linux,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Impact {
+    SiteBroken,
+    FeatureBroken,
+    SignificantVisual,
+    MinorVisual,
+    UnsupportedMessage,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum AffectsUsers {
+    All,
+    Some,
+    Few,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum BreakageResolution {
+    SiteChanged,
+    SiteFixed,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
