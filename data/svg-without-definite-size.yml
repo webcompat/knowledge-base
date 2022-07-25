@@ -14,7 +14,7 @@ symptoms:
 
 solutions:
   interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/css/bug1751022-chotot.com-image-width-fix.css
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1751022-chotot.com-image-width-fix.css
 
   workarounds:
     - "Setting a definite width or height / min-width or min-height for the affected svg icon."
