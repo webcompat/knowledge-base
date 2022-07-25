@@ -12,7 +12,7 @@ symptoms:
   - "Wrong character position with IME"
 solutions:
   interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/main/src/injections/js/bug1739489-draftjs-beforeinput.js
+    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/js/bug1739489-draftjs-beforeinput.js
 references:
   breakage:
     - https://github.com/webcompat/web-bugs/issues/13503
