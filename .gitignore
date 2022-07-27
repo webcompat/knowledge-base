@@ -2,8 +2,13 @@
 .DS_Store
 ._*
 
+# Temporary data files
+.cache/
+
 # Build output from the kbcheck tool
 target/
 
+
+# Python
 .mypy_cache/
 .env

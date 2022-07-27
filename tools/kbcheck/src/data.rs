@@ -69,3 +69,12 @@ pub fn load_all(root_path: &Path) -> Result<EntriesMap, DataError> {
     }
     Ok(entries)
 }
+
+pub fn load_paths(_root_path: &Path, data_paths: &[&Path]) -> Result<EntriesMap, DataError> {
+    let mut entries = BTreeMap::new();
+    for path in data_paths.iter() {
+        let entry = load_data_file(path)?;
+        entries.insert(path.to_path_buf(), entry);
+    }
+    Ok(entries)
+}

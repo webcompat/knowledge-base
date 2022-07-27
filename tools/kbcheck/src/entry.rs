@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use serde::{Deserialize, Serialize};
 use url::Url;
 
@@ -68,7 +70,7 @@ impl BreakageItem {
 pub struct Breakage {
     pub url: Url,
     pub site: Url,
-    pub platform: Vec<Platform>,
+    pub platform: Vec<InputPlatform>,
     pub last_reproduced: Option<String>, // Date
     pub intervention: Option<Url>,
     pub impact: Impact,
@@ -79,9 +81,44 @@ pub struct Breakage {
     pub notes: String,
 }
 
+impl Breakage {
+    pub fn platforms(&self) -> HashSet<Platform> {
+        let mut platforms = HashSet::new();
+        for platform in self.platform.iter() {
+            match platform {
+                InputPlatform::All => {
+                    platforms.insert(Platform::Android);
+                    platforms.insert(Platform::Linux);
+                    platforms.insert(Platform::Macos);
+                    platforms.insert(Platform::Windows);
+                    break;
+                }
+                InputPlatform::Desktop => {
+                    platforms.insert(Platform::Linux);
+                    platforms.insert(Platform::Macos);
+                    platforms.insert(Platform::Windows);
+                }
+                InputPlatform::Mobile => {
+                    platforms.insert(Platform::Android);
+                }
+                InputPlatform::Windows => {
+                    platforms.insert(Platform::Windows);
+                }
+                InputPlatform::Macos => {
+                    platforms.insert(Platform::Macos);
+                }
+                InputPlatform::Linux => {
+                    platforms.insert(Platform::Linux);
+                }
+            }
+        }
+        platforms
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
-pub enum Platform {
+pub enum InputPlatform {
     All,
     Desktop,
     Mobile,
@@ -90,7 +127,15 @@ pub enum Platform {
     Linux,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Copy, Debug, Eq, Hash, PartialEq, Serialize, Deserialize)]
+pub enum Platform {
+    Android,
+    Linux,
+    Macos,
+    Windows,
+}
+
+#[derive(Copy, Clone, Debug, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum Impact {
     SiteBroken,
