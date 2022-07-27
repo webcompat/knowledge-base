@@ -72,6 +72,7 @@ pub struct Breakage {
     pub last_reproduced: Option<String>, // Date
     pub intervention: Option<Url>,
     pub impact: Impact,
+    #[serde(default)]
     pub affects_users: AffectsUsers,
     pub resolution: Option<BreakageResolution>,
     #[serde(default)]
@@ -105,6 +106,11 @@ pub enum AffectsUsers {
     All,
     Some,
     Few,
+}
+impl Default for AffectsUsers {
+    fn default() -> Self {
+        AffectsUsers::All
+    }
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
