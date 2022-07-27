@@ -17,14 +17,77 @@ solutions:
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/24628
-    - https://github.com/webcompat/web-bugs/issues/55413
-    - https://github.com/webcompat/web-bugs/issues/55857
-    - https://github.com/webcompat/web-bugs/issues/65773
-    - https://github.com/webcompat/web-bugs/issues/68347
-    - https://github.com/webcompat/web-bugs/issues/72988
-    - https://github.com/webcompat/web-bugs/issues/73699
-    - https://github.com/webcompat/web-bugs/issues/105932
+    - url: https://github.com/webcompat/web-bugs/issues/24628
+      site: https://mail.yahoo.com/d/settings/4
+      platform:
+        - all
+      last_reproduced: 2019-01-29
+      impact: feature_broken
+      affects_users: all
+      resolution: site_fixed
+      notes: Only affects settings. Feature isn't really broken, but is harder to use.
+
+    - url: https://github.com/webcompat/web-bugs/issues/55413
+      site: https://rentry.jp/
+      platform:
+        - all
+      last_reproduced: 2022-07-27
+      impact: site_broken
+      affects_users: all
+      notes: Search feature is broken, but assuming this makes the site unusable.
+
+    - url: https://github.com/webcompat/web-bugs/issues/55857
+      site: https://www.holidaylettings.co.uk/rentals/grantown-on-spey/10545857
+      platform:
+        - mobile
+      last_reproduced: 2020-11-16
+      impact: site_broken
+      affects_users: all
+      resolution: site_changed
+
+    - url: https://github.com/webcompat/web-bugs/issues/65773
+      site: https://www.hrvatskitelekom.hr/
+      platform:
+        - all
+      last_reproduced: 2022-07-27
+      impact: feature_broken
+      affects_users: all
+
+    - url: https://github.com/webcompat/web-bugs/issues/68347
+      site: https://m.facebook.com/marketplace/selling/item/
+      platform:
+        - mobile
+      last_reproduced: 2022-06-04
+      impact: feature_broken
+      affects_users: all
+
+    - url: https://github.com/webcompat/web-bugs/issues/72988
+      site: https://sites.google.com/
+      platform:
+        - desktop
+      last_reproduced: 2021-10-12
+      impact: feature_broken
+      affects_users: all
+
+    - url: https://github.com/webcompat/web-bugs/issues/73699
+      site: https://m.aliexpress.com/?tracelog=wwwhome2mobilesitehome
+      platform:
+        - mobile
+      last_reproduced: 2021-05-13
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/0a4ed0cd276e3d2f7633fa1799ba584909a35ceb/src/injections/js/bug1711082-m.aliexpress.com-undisable-search.js
+      impact: feature_broken
+      affects_users: all
+      resolution: site_changed
+
+    - url: https://github.com/webcompat/web-bugs/issues/105932
+      site: https://www.dunzo.com
+      platform:
+        - mobile
+      last_reproduced: 2022-06-20
+      impact: site_broken
+      affects_users: all
+      notes: Assuming broken search makes site unusable
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1653882
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1774035
