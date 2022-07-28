@@ -14,16 +14,85 @@ solutions:
 
 references:
   breakage:
-    - https://webcompat.com/issues/21212
-    - https://webcompat.com/issues/24462
-    - https://webcompat.com/issues/50378
-    - https://webcompat.com/issues/50378
-    - https://webcompat.com/issues/57504
-    - https://webcompat.com/issues/57676
-    - https://webcompat.com/issues/62572
-    - https://webcompat.com/issues/64199
-    - https://webcompat.com/issues/73463
-    - https://webcompat.com/issues/105417
+    - url: https://webcompat.com/issues/24462
+      site: https://www.redbubble.com/shop/firefox?ref=search_box
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2019-01-23
+
+    - url: https://webcompat.com/issues/50378
+      site: https://bing.com/covid
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2020-03-20
+
+    - url: https://webcompat.com/issues/57676
+      site: https://www.mediamarkt.nl/nl/category/_tablets-645048.html#filter-container
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2020-09-07
+
+    - url: https://webcompat.com/issues/21212
+      site: https://www.redbubble.com/shop/design+mens-sweatshirts?cat_context=men-clothes&ref=shop_medium_refinement
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2018-11-12
+
+    - url: https://webcompat.com/issues/57504
+      site: https://www.talentigelato.com/findtalenti
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2020-09-08
+
+    - url: https://webcompat.com/issues/62572
+      site: https://artusi.com.au/retailers/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: some
+      last_reproduced: 2022-07-28
+
+    - url: https://webcompat.com/issues/64199
+      site: https://docs.amplify.aws/cli/graphql-transformer/overview#api-category-project-structure
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2020-12-28
+
+    - url: https://webcompat.com/issues/73463
+      site: https://www.tiktok.com/@sabrinacarpenter
+      platform:
+        - desktop
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/c6149e852762ab4704f1566070c52594f2364da2/src/injections/css/bug1710701-tiktok.com-comments-scrollbar.css
+      resolution: site_fixed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2021-05-11
+
+    - url: https://webcompat.com/issues/105417
+      site: https://nutmeg.morrisons.com/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-06-08
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1521631
     - https://bugs.chromium.org/p/chromium/issues/detail?id=649496
