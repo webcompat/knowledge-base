@@ -17,7 +17,8 @@ BROWSER_MAP = {
 
 RESOLVED_MAP = {
     "fixed": "site_fixed",
-    "worksforme": "site_changed"
+    "worksforme": "site_changed",
+    "invalid": "site_changed"
 }
 
 SEVERITY_MAP = {
