@@ -15,10 +15,31 @@ symptoms:
 
 references:
   breakage:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1253840#c0
-    - https://github.com/webcompat/web-bugs/issues/86890
-    - https://github.com/webcompat/web-bugs/issues/104271
-    - https://support.mozilla.org/en-US/questions/1303902
+    - url: https://webcompat.com/issues/86890
+      site: https://www.mathcha.io/editor
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-07-28
+
+    - url: https://webcompat.com/issues/104271
+      site: https://1drv.ms/w/s!AjIvZx6ap3FMjn2lOOjjAGqzGixO?e=lXn0Xx
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-07-15
+
+    - url: https://support.mozilla.org/en-US/questions/1303902
+      site: https://wordpress.org/plugins/block-options/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2020-09-14
+      notes: Can't justify text when a WordPress editor with a non-native plugin
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1253840
   testcases:
