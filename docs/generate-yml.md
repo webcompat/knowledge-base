@@ -3,7 +3,14 @@
 The script will generate a yml file in the `data` directory and prefill title, breakage reports from webcompat and fenix repository, as well as
 platform links (the original bugzilla bug and any others from bugs.chromium.org or bugs.webkit.org).
 
-It can be run the following way:
+Before running the script, generate a new GitHub token on https://github.com/settings/tokens
+and create an .env file in the root directory with the following content:
+
+```
+GITHUB_TOKEN = '<your token>'
+```
+
+The script can be run the following way:
 
 ```
 python3 -m venv env

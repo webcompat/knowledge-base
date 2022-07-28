@@ -6,3 +6,4 @@
 target/
 
 .mypy_cache/
+.env
