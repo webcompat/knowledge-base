@@ -15,11 +15,57 @@ solutions:
     - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/js/bug1739489-draftjs-beforeinput.js
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/13503
-    - https://github.com/webcompat/web-bugs/issues/91682
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1633399
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1735227
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1739489
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1739791
+    - url: https://github.com/webcompat/web-bugs/issues/13503
+      site: https://web.whatsapp.com
+      platform:
+        - macos
+      last_reproduced: 2019-01-18
+      impact: feature_broken
+      affects_users: all
+      resolution: site_fixed
+
+    - url: https://github.com/webcompat/web-bugs/issues/91682
+      site: https://new.reddit.com
+      platform:
+        - desktop
+      last_reproduced: 2022-06-27
+      impact: feature_broken
+      affects_users: all
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1633399
+      site: https://twitter.com
+      platform:
+        - windows
+      last_reproduced: 2022-04-12
+      impact: site_broken
+      affects_users: some
+      notes: IME users affected
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1735227
+      site: https://twitter.com
+      platform:
+        - linux
+      last_reproduced: 2022-06-23
+      impact: feature_broken
+      affects_users: some
+      notes: Some IME configuations affected
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1739489
+      site: https://facebook.com
+      platform:
+        - macos
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/0ab775e082fc3a518e4df1d105cd24faf2e839b4/src/injections/js/bug1739489-draftjs-beforeinput.js
+      last_reproduced: 2022-02-22
+      impact: feature_broken
+      affects_users: all
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1739791
+      site: https://reddit.com
+      platform:
+        - windows
+      last_reproduced: 2022-05-18
+      impact: feature_broken
+      affects_users: all
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=903746
