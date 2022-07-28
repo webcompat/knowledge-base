@@ -17,8 +17,7 @@ BROWSER_MAP = {
 
 RESOLVED_MAP = {
     "fixed": "site_fixed",
-    "worksforme": "site_changed",
-    "intervention": "site_changed"
+    "worksforme": "site_changed"
 }
 
 SEVERITY_MAP = {
@@ -103,8 +102,6 @@ class WebcompatIssue:
         return "Can't estimate impact, please enter it manually."
 
     def generate_report(self) -> dict:
-        is_fixed = False
-
         report = {
             "url": self.build_canonical_url(),
             "site": self.breakage_url,
@@ -112,24 +109,17 @@ class WebcompatIssue:
         }
 
         if self.milestone in RESOLVED_MAP.keys():
-            is_fixed = True
             report["resolution"] = RESOLVED_MAP[self.milestone]
 
         if "sitepatch-applied" in self.labels:
-            is_fixed = True
             report["intervention"] = "Intervention is detected for this issue. Please locate it manually."
-            report["resolution"] = RESOLVED_MAP["intervention"]
 
-        if is_fixed:
-            report["impact"] = "minor_visual"
-            report["affects_users"] = "few"
-        else:
-            report["impact"] = self.estimate_impact()
-            report["affects_users"] = f"Check the issue for more details: {self.title}."
+        report["impact"] = self.estimate_impact()
+        report["affects_users"] = f"Check the issue for more details: {self.title}."
 
-            reproduced_date = self.get_last_reproduced()
-            if reproduced_date:
-                report["last_reproduced"] = reproduced_date
+        reproduced_date = self.get_last_reproduced()
+        if reproduced_date:
+            report["last_reproduced"] = reproduced_date
 
         return report
 
