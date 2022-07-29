@@ -14,18 +14,104 @@ console_messages:
 
 references:
   breakage:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1422891#c0
-    - https://webcompat.com/issues/16213
-    - https://webcompat.com/issues/23080
-    - https://webcompat.com/issues/30558
-    - https://webcompat.com/issues/68219
-    - https://webcompat.com/issues/76678
-    - https://webcompat.com/issues/89932
-    - https://github.com/webcompat/web-bugs/issues/94987
-    - https://github.com/webcompat/web-bugs/issues/99584
-    - https://github.com/webcompat/web-bugs/issues/99674
-    - https://github.com/webcompat/web-bugs/issues/92002
-    - https://github.com/webcompat/web-bugs/issues/105276
+    - url: https://webcompat.com/issues/16213
+      site: http://www.nonton.mobi/the-shape-of-water/
+      platform:
+        - desktop
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2018-03-29
+
+    - url: https://webcompat.com/issues/23080
+      site: https://rdxhd.vip/watch-badhaai-ho-2018-online/
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2019-01-16
+
+    - url: https://webcompat.com/issues/30558
+      site: https://rdxhd.wtf/avengers-endgame-watch-online/
+      platform:
+        - desktop
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2019-05-13
+
+    - url: https://webcompat.com/issues/68219
+      site: https://send.cm/xm2n3sets3ot
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2021-03-16
+      notes: "This report is filed by the same user as the other file sharing reports in this entry."
+
+    - url: https://webcompat.com/issues/76678
+      site: https://www.mkvking.in/2021/06/shes-out-of-my-league-2010-720p-hindi.html?m=1
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2021-07-23
+
+    - url: https://webcompat.com/issues/89932
+      site: http://files.im/embed-bu7dhcidryfc.html
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2021-10-18
+      notes: "This report is filed by the same user as the other file sharing reports in this entry."
+
+    - url: https://webcompat.com/issues/94987
+      site: https://odysee.com/@SchleFaz:c/sadomona:4
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-07-29
+
+    - url: https://webcompat.com/issues/99584
+      site: https://send.cm/e5ei3o5yunn5
+      platform:
+        - desktop
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-02-18
+      notes: "This report is filed by the same user as the other file sharing reports in this entry."
+
+    - url: https://webcompat.com/issues/99674
+      site: https://www22.movierulzfree.is/waaw/?l=2zqnJWxSr2pV
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-02-17
+
+    - url: https://webcompat.com/issues/92002
+      site: https://gofile.io/d/trYWpi
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      notes: "This report is filed by the same user as the other file sharing reports in this entry."
+
+    - url: https://webcompat.com/issues/105276
+      site: https://platform.a.team/mission/6297e5877d36210011bb6536
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-06-20
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1422891
     - https://bugs.chromium.org/p/chromium/issues/detail?id=967100
