@@ -257,5 +257,9 @@ references:
       affects_users: all
       last_reproduced: 2021-04-13
 
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=390936
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1589766
+
   testcases:
     - https://github.com/web-platform-tests/wpt/pull/25314
