@@ -85,62 +85,62 @@
           "items": {
             "anyOf": [
               {
-              "type": "string",
-              "format": "uri",
-              "description": "URL of tracking issue"
-            },
+                "type": "string",
+                "format": "uri",
+                "description": "URL of tracking issue"
+              },
               {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL of tracking issue"
-                },
-                "site": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL of broken site or page"
-                },
-                "platform": {
-                  "type": "array",
-                  "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
                     "type": "string",
-                    "enum": ["all", "desktop", "mobile", "windows", "macos", "linux"],
-                    "description": "List of affected platforms. Default is 'all'"
+                    "format": "uri",
+                    "description": "URL of tracking issue"
+                  },
+                  "site": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of broken site or page"
+                  },
+                  "platform": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["all", "desktop", "mobile", "windows", "macos", "linux"],
+                      "description": "List of affected platforms. Default is 'all'"
+                    }
+                  },
+                  "last_reproduced": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Most recent date the issue was successfully reproduced"
+                  },
+                  "intervention": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of intervention that is shipping or has been shipped. Link to the code in the GitHub repository, and use the canonical URLs to ensure persistance over time"
+                  },
+                  "impact": {
+                    "type": "string",
+                    "enum": ["site_broken", "feature_broken", "significant_visual", "minor_visual", "unsupported_message"],
+                    "description": "Type of breakage"
+                  },
+                  "affects_users": {
+                    "type": "string",
+                    "enum": ["all", "some", "few"],
+                    "description": "What fraction of users are affected. 'all' where any site user is likely to run into the issue, 'some' for issues that are common but many users will not experience, and 'few' where the breakage depends on an unusual configuration or similar."
+                  },
+                  "resolution": {
+                    "type": "string",
+                    "enum": ["site_changed", "site_fixed"],
+                    "description": "If the issue no longer reproduces on this site, the kind of change that happened. 'site_change' if there was a general redesign or the site is no longer online, 'site_fixed' if the specific issue was patched."
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "Any additional notes about why the other fields for this issue are set to the given values."
                   }
-                },
-                "last_reproduced": {
-                  "type": "string",
-                  "format": "date",
-                  "description": "Most recent date the issue was successfully reproduced"
-                },
-                "intervention": {
-                  "type": "string",
-                  "format": "uri",
-                  "description": "URL of intervention that is shipping or has been shipped. Link to the code in the GitHub repository, and use the canonical URLs to ensure persistance over time"
-                },
-                "impact": {
-                  "type": "string",
-                  "enum": ["site_broken", "feature_broken", "significant_visual", "minor_visual", "unsupported_message"],
-                  "description": "Type of breakage"
-                },
-                "affects_users": {
-                  "type": "string",
-                  "enum": ["all", "some", "few"],
-                  "description": "What fraction of users are affected. 'all' where any site user is likely to run into the issue, 'some' for issues that are common but many users will not experience, and 'few' where the breakage depends on an unusual configuration or similar."
-                },
-                "resolution": {
-                  "type": "string",
-                  "enum": ["site_changed", "site_fixed"],
-                  "description": "If the issue no longer reproduces on this site, the kind of change that happened. 'site_change' if there was a general redesign or the site is no longer online, 'site_fixed' if the specific issue was patched."
-                },
-                "notes": {
-                  "type": "string",
-                  "description": "Any additional notes about why the other fields for this issue are set to the given values."
                 }
               }
-            }
             ]
           }
         },
