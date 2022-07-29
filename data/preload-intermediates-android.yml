@@ -12,17 +12,97 @@ symptoms:
 
 references:
   breakage:
-  - https://webcompat.com/issues/66203
-  - https://webcompat.com/issues/66930
-  - https://github.com/mozilla-mobile/fenix/issues/20769
-  - https://github.com/mozilla-mobile/fenix/issues/21664
-  - https://github.com/webcompat/web-bugs/issues/102811
-  - https://github.com/webcompat/web-bugs/issues/99924
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1672402
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1700040
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1716454
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1774374
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1718744
+    - url: https://webcompat.com/issues/66203
+      site: https://www.apple.com/ca/shop/product/MD826AM/A/lightning-digital-av-adapter?afid=p238%7CsftQfrVmm-dm_mtid_1870765e38482_pcrid_240928640307_pgrid_51053124675_&cid=aos-ca-kwgo-pla-brand--slid---product-MD826AM/A-CA
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-01-25
+
+    - url: https://webcompat.com/issues/66930
+      site: https://www.apple.com/es/shop/buy-mac/macbook-pro/13-pulgadas-gris-espacial-procesador-intel-core-i5-de-cuatro-n%C3%BAcleos-a-2-ghz-con-intel-iris-plus-graphics-512gb#
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-02-10
+
+    - url: https://github.com/mozilla-mobile/fenix/issues/20769
+      site: https://80.style
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-08-10
+
+    - url: https://github.com/mozilla-mobile/fenix/issues/21664
+      site: https://ib.heritage.com.au/IB/Login.aspx
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-10-03
+
+    - url: https://webcompat.com/issues/102811
+      site: https://cbseacademic.nic.in/SQP_CLASSX_2021-22.html
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-04-18
+
+    - url: https://webcompat.com/issues/99924
+      site: https://www.nvsp.in/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-05-16
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1672402
+      site: https://www.sheffield.gov.uk
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2020-10-21
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1700040
+      site: https://www.autenticacao.gov.pt
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-03-22
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1716454
+      site: https://wits.worldbank.org/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-06-15
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1774374
+      site: https://openup.uni-potsdam.de/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-06-15
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1718744
+      site: https://www.salutelazio.it
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-07-06
+
   platform_issues:
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1520297
-  - https://bugzilla.mozilla.org/show_bug.cgi?id=1535662
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1520297
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1535662
+
