@@ -13,28 +13,104 @@ symptoms:
   - "Icon has zero width and height therefore is invisible."
 
 solutions:
-  interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1751022-chotot.com-image-width-fix.css
-
   workarounds:
     - "Setting a definite width or height / min-width or min-height for the affected svg icon."
 
 references:
   breakage:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521882#c0
-    - https://webcompat.com/issues/24694
-    - https://webcompat.com/issues/44773
-    - https://webcompat.com/issues/52604
-    - https://webcompat.com/issues/55337
-    - https://webcompat.com/issues/59838
-    - https://webcompat.com/issues/63837
-    - https://webcompat.com/issues/67325
-    - https://webcompat.com/issues/103397
-    - https://webcompat.com/issues/55924
-    - https://webcompat.com/issues/95541
-    - https://webcompat.com/issues/100401
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1741528
-  platform_issues:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521882
+    - url: https://webcompat.com/issues/24694
+      site: https://www.paypal.com/myaccount/home
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2019-01-23
+
+    - url: https://webcompat.com/issues/44773
+      site: https://codepen.io/tr0pical1nternet/pen/dxgobm
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: few
+      last_reproduced: 2019-11-26
+      notes: Testcase on codepen
+
+    - url: https://webcompat.com/issues/52604
+      site: https://www.messenger.com
+      platform:
+        - windows
+      impact: minor_visual
+      affects_users: some
+      last_reproduced: 2020-05-12
+
+    - url: https://webcompat.com/issues/55337
+      site: https://www.masterliness.com/software.html
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2020-07-16
+
+    - url: https://webcompat.com/issues/59838
+      site: https://www.lenoxx.com.br/
+      platform:
+        - desktop
+      resolution: site_changed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2020-10-14
+
+    - url: https://webcompat.com/issues/63837
+      site: https://order.tacombi.com/location/nolita
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-07-29
+
+    - url: https://webcompat.com/issues/67325
+      site: https://www.cbsnews.com/#app
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2021-03-04
+
+    - url: https://webcompat.com/issues/103397
+      site: https://teams.microsoft.com/_#/apps/66aeee93-507d-479a-a3ef-8f494af43945/sections/classroom
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-06-03
+
+    - url: https://webcompat.com/issues/55924
+      site: https://www.masterliness.com/services.html
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2020-07-28
+
+    - url: https://webcompat.com/issues/95541
+      site: https://nha.chotot.com/mua-ban-nha-dat-quan-phu-nhuan-tp-ho-chi-minh/88694225.htm
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1751022-chotot.com-image-width-fix.css
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-03-17
+
+    - url: https://webcompat.com/issues/100401
+      site: https://resources.github.com/ci-cd/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: 2022-07-29
+
   testcases:
     - https://bug1521882.bmoattachments.org/attachment.cgi?id=9038313
