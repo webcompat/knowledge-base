@@ -16,7 +16,13 @@ symptoms:
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/101503
+    - url: https://github.com/webcompat/web-bugs/issues/101503
+      site: https://myaccount.google.com
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-07-29
 
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1768622

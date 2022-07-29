@@ -16,9 +16,27 @@ symptoms:
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/42033
-    - https://github.com/webcompat/web-bugs/issues/101753
-    - https://github.com/webcompat/web-bugs/issues/103230
+    - url: https://github.com/webcompat/web-bugs/issues/42033
+      site: https://login.live.com
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-07-29
+    - url: https://github.com/webcompat/web-bugs/issues/101753
+      site: https://mysignins.microsoft.com/security-info
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-07-29
+    - url: https://github.com/webcompat/web-bugs/issues/103230
+      site: https://login.live.com
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-07-29
 
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1530370
