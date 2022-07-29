@@ -11,7 +11,13 @@ symptoms:
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/107337
+    - url: https://github.com/webcompat/web-bugs/issues/107337
+      site: https://webcamtests.com
+      platform:
+        - macos
+      impact: minor_visual
+      affects_users: few
+      last_reproduced: 2022-07-29
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1681334
   testcases:
