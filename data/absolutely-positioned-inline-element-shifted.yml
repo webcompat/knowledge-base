@@ -19,11 +19,49 @@ solutions:
 
 references:
   breakage:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=997189#c0
-    - https://webcompat.com/issues/22867
-    - https://webcompat.com/issues/29886
-    - https://webcompat.com/issues/53950
-    - https://webcompat.com/issues/102133
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=997189#c0
+      site: https://www.rentsixmile.com/login
+      platform:
+        - all
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2014-04-17
+      resolution: site_changed
+
+    - url: https://webcompat.com/issues/22867
+      site: https://thejns.org/view/journals/j-neurosurg/126/4/article-p1227.xml
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2020-08-24'
+
+    - url: https://webcompat.com/issues/29886
+      site: https://gaana.com/gdpr
+      platform:
+        - mobile
+      resolution: site_fixed
+      impact: site_broken
+      last_reproduced: '2020-02-10'
+      affects_users: all
+
+    - url: https://webcompat.com/issues/53950
+      site: https://missingmail.usps.com/?_gl=1*veidlp*_gcl_aw*R0NMLjE1OTE3MjUyNTkuRUFJYUlRb2JDaE1Jd3AzaTBhYjE2UUlWa01EQUNoMlBBUVlrRUFBWUFTQUFFZ0lMeFBEX0J3RQ..*_gcl_dc*R0NMLjE1OTE3MjUyNTkuRUFJYUlRb2JDaE1Jd3AzaTBhYjE2UUlWa01EQUNoMlBBUVlrRUFBWUFTQUFFZ0lMeFBEX0J3RQ..#/
+      platform:
+        - desktop
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/ff71f04c47ecc617a27a93d78dc3a2029023d0ad/src/injections/css/bug1644830-missingmail.usps.com-checkboxes-not-visible.css
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2020-07-14'
+
+    - url: https://webcompat.com/issues/102133
+      site: https://veniceincoming.com/it_IT/eventi?page=2&per_page=5
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/3d98d47bece1cf3cceafd1167fdc9d4d995c38d1/src/injections/css/bug1765947-veniceincoming.com-left-fix.css
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2022-04-07'
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=997189
   testcases:
