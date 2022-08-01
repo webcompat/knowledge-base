@@ -15,32 +15,162 @@ references:
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1659818
     - https://github.com/mozilla-mobile/fenix/issues/13214
+
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/59618
-    - https://github.com/webcompat/web-bugs/issues/59719
-    - https://github.com/webcompat/web-bugs/issues/60821
-    - https://github.com/webcompat/web-bugs/issues/67173
-    - https://github.com/webcompat/web-bugs/issues/68854
-    - https://github.com/webcompat/web-bugs/issues/69114
-    - https://github.com/webcompat/web-bugs/issues/71164
-    - https://github.com/webcompat/web-bugs/issues/73792
-    - https://github.com/webcompat/web-bugs/issues/74579
-    - https://github.com/webcompat/web-bugs/issues/77486
-    - https://github.com/webcompat/web-bugs/issues/80978
-    - https://github.com/webcompat/web-bugs/issues/81762
-    - https://github.com/webcompat/web-bugs/issues/84076
-    - https://github.com/webcompat/web-bugs/issues/90726
-    - https://github.com/webcompat/web-bugs/issues/104026
-    - https://github.com/webcompat/web-bugs/issues/104528
-    - https://github.com/webcompat/web-bugs/issues/105049
-    - https://github.com/webcompat/web-bugs/issues/106194
-    - https://github.com/webcompat/web-bugs/issues/106301
-    - https://github.com/webcompat/web-bugs/issues/106435
-    - https://github.com/webcompat/web-bugs/issues/106905
-    - https://github.com/webcompat/web-bugs/issues/107032
+    - url: https://webcompat.com/issues/59618
+      site: https://www.medicare.gov/plan-compare/#/search-results?plan_type=PLAN_TYPE_PDP&fips=17031&zip=60076&year=2021&lang=en
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2020-10-22'
+    - url: https://webcompat.com/issues/59719
+      site: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_print
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2020-10-12'
+    - url: https://webcompat.com/issues/60821
+      site: https://www.ndr.de/ratgeber/kochen/rezepte/rezeptdb6_id-13710_broadcast-1245_station-ndrtv.html
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2020-11-03'
+    - url: https://webcompat.com/issues/67173
+      site: https://www.allrecipes.com/recipe/232719/chef-johns-pita-bread/?printview
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-02-16'
+    - url: https://webcompat.com/issues/68854
+      site: https://www.allrecipes.com/recipe/14136/jasmine-rice/?printview
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-03-26'
+    - url: https://webcompat.com/issues/69114
+      site: https://www.homedepot.ca/order-confirmation?orderId=MDIxNjY5MTQxOQ%3D%3D
+      platform:
+        - mobile
+      last_reproduced: '2021-04-03'
+      impact: feature_broken
+      affects_users: some
+    - url: https://webcompat.com/issues/71164
+      site: https://www.bakedbyrachel.com/maple-glazed-cinnamon-rolls/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-04-22'
+    - url: https://webcompat.com/issues/73792
+      site: https://addons.mozilla.org/en-US/android/addon/print-for-firefox/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-02-13'
+    - url: https://webcompat.com/issues/74579
+      site: https://www.delta.com/PCCOciWeb/previewBoardingDocuments.action
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-05-21'
+    - url: https://webcompat.com/issues/77486
+      site: https://nmmccovidcare.com/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-01-05'
+    - url: https://webcompat.com/issues/80978
+      site: https://en.m.wikipedia.org/w/index.php?title=Wave&article_action=watch
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-02-01'
+    - url: https://webcompat.com/issues/81762
+      site: https://www.amextravel.com/hotel-searches/98886995
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/b7b94b61da97cc2acf887da1ba781d70b4772ca4/src/injections/js/bug1724764-amextravel.com-window-print.js
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2021-08-09'
+    - url: https://webcompat.com/issues/84076
+      site: https://www.wikipedia.org/
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-08-19'
+    - url: https://webcompat.com/issues/90726
+      site: https://neftyblocks.com/c/friedfactory/drops/55262
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2021-10-26'
+      resolution: site_fixed
+    - url: https://webcompat.com/issues/104026
+      site: https://retail.onlinesbi.com/retail/printimpstxndetail.htm
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+    - url: https://webcompat.com/issues/104528
+      site: https://telegov.njportal.com/njmvc/CustomerCreateAppointments/Confirmation?confirmationNumber=lEa468314
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-05-18'
+    - url: https://webcompat.com/issues/105049
+      site: https://www.amazon.co.uk
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-05-31'
+    - url: https://webcompat.com/issues/106194
+      site: https://annualcreditreport.transunion.com/dss/disclosure.page#
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-06-21'
+    - url: https://webcompat.com/issues/106301
+      site: https://www.allrecipes.com/recipe/233920/tender-and-easy-buttermilk-waffles/?printview
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-06-24'
+    - url: https://webcompat.com/issues/106435
+      site: https://www.americastestkitchen.com/recipes/11395-dark-chocolate-avocado-pudding/print
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-06-28'
+    - url: https://webcompat.com/issues/106905
+      site: https://rajshaladarpan.nic.in/SD3/Home/School/StudentExitbyTC.aspx
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-07-05'
+    - url: https://webcompat.com/issues/107032
+      site: https://cets.apsche.ap.gov.in/EAPCET/Eapcet/EAPCET_DownloadHallTicket.aspx?Flag=bbWw1md3lFngVv3s8Y4UVlOQpYMJWp0cEt9SN8dX3A+kDB3qgl6neMqvkE1jFk6ZtefFs6i0eqb5iM7OL2ab2w==
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-07-07'
   testcases:
     - https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_print
-
-solutions:
-  interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/b7b94b61da97cc2acf887da1ba781d70b4772ca4/src/injections/js/bug1724764-amextravel.com-window-print.js
