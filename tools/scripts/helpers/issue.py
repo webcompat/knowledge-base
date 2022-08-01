@@ -133,6 +133,8 @@ class Issue:
             self.type = "webcompat"
         elif "mozilla-mobile" in url:
             self.type = "fenix"
+        else:
+            self.type = "other"
 
     def generate_report(self) -> dict:
         report = {
