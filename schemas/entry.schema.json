@@ -122,8 +122,8 @@
                   },
                   "impact": {
                     "type": "string",
-                    "enum": ["site_broken", "feature_broken", "significant_visual", "minor_visual", "unsupported_message"],
-                    "description": "Type of breakage"
+                    "enum": ["site_broken", "workflow_broken", "feature_broken", "significant_visual", "minor_visual", "unsupported_message"],
+                    "description": "Type of breakage. 'site_broken' if the site is totally broken or unusable. 'workflow_broken' if a key site workflow doesn't work. 'feature_broken' for more minor feature breakage. 'significant_visual' for layout issues that make the site hard to use but don't actually break a feature. 'minor_visual' for small but noticable visual issues. 'unsupported_message' if the site actively blocks Firefox users."
                   },
                   "affects_users": {
                     "type": "string",

@@ -94,6 +94,7 @@ pub enum Platform {
 #[serde(rename_all = "snake_case")]
 pub enum Impact {
     SiteBroken,
+    WorkflowBroken,
     FeatureBroken,
     SignificantVisual,
     MinorVisual,
