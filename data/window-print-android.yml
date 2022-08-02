@@ -21,7 +21,7 @@ references:
       site: https://www.medicare.gov/plan-compare/#/search-results?plan_type=PLAN_TYPE_PDP&fips=17031&zip=60076&year=2021&lang=en
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2020-10-22'
     - url: https://webcompat.com/issues/59719
@@ -35,16 +35,9 @@ references:
       site: https://www.ndr.de/ratgeber/kochen/rezepte/rezeptdb6_id-13710_broadcast-1245_station-ndrtv.html
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2020-11-03'
-    - url: https://webcompat.com/issues/67173
-      site: https://www.allrecipes.com/recipe/232719/chef-johns-pita-bread/?printview
-      platform:
-        - mobile
-      impact: feature_broken
-      affects_users: some
-      last_reproduced: '2021-02-16'
     - url: https://webcompat.com/issues/68854
       site: https://www.allrecipes.com/recipe/14136/jasmine-rice/?printview
       platform:
@@ -57,13 +50,13 @@ references:
       platform:
         - mobile
       last_reproduced: '2021-04-03'
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
     - url: https://webcompat.com/issues/71164
       site: https://www.bakedbyrachel.com/maple-glazed-cinnamon-rolls/
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2021-04-22'
     - url: https://webcompat.com/issues/73792
@@ -77,14 +70,14 @@ references:
       site: https://www.delta.com/PCCOciWeb/previewBoardingDocuments.action
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2021-05-21'
     - url: https://webcompat.com/issues/77486
       site: https://nmmccovidcare.com/
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2022-01-05'
     - url: https://webcompat.com/issues/80978
@@ -127,7 +120,7 @@ references:
       site: https://telegov.njportal.com/njmvc/CustomerCreateAppointments/Confirmation?confirmationNumber=lEa468314
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2022-05-18'
     - url: https://webcompat.com/issues/105049
@@ -141,21 +134,14 @@ references:
       site: https://annualcreditreport.transunion.com/dss/disclosure.page#
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2022-06-21'
-    - url: https://webcompat.com/issues/106301
-      site: https://www.allrecipes.com/recipe/233920/tender-and-easy-buttermilk-waffles/?printview
-      platform:
-        - mobile
-      impact: feature_broken
-      affects_users: some
-      last_reproduced: '2022-06-24'
     - url: https://webcompat.com/issues/106435
       site: https://www.americastestkitchen.com/recipes/11395-dark-chocolate-avocado-pudding/print
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2022-06-28'
     - url: https://webcompat.com/issues/106905
@@ -169,7 +155,7 @@ references:
       site: https://cets.apsche.ap.gov.in/EAPCET/Eapcet/EAPCET_DownloadHallTicket.aspx?Flag=bbWw1md3lFngVv3s8Y4UVlOQpYMJWp0cEt9SN8dX3A+kDB3qgl6neMqvkE1jFk6ZtefFs6i0eqb5iM7OL2ab2w==
       platform:
         - mobile
-      impact: feature_broken
+      impact: workflow_broken
       affects_users: some
       last_reproduced: '2022-07-07'
   testcases:
