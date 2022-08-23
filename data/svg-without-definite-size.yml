@@ -112,5 +112,13 @@ references:
       affects_users: all
       last_reproduced: 2022-07-29
 
+    - url: https://webcompat.com/issues/109334
+      site: https://www.xenos.nl/
+      platform:
+        - mobile
+      impact: workflow_broken
+      affects_users: all
+      last_reproduced: 2022-08-23
+
   testcases:
     - https://bug1521882.bmoattachments.org/attachment.cgi?id=9038313
