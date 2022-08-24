@@ -67,5 +67,13 @@ references:
       impact: feature_broken
       affects_users: all
 
+    - url: https://webcompat.com/issues/109064
+      site: https://cmcreg.bancosantander.es/nhb-keygeneration/
+      platform:
+        - mobile
+      last_reproduced: 2022-08-23
+      impact: feature_broken
+      affects_users: some
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=903746
