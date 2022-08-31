@@ -102,6 +102,14 @@ references:
       affects_users: all
       last_reproduced: 2021-07-06
 
+    - url: https://webcompat.com/issues/109858
+      site: https://bdu.ac.in/examinations/results/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-08-30
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1520297
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1535662

@@ -120,5 +120,13 @@ references:
       affects_users: all
       last_reproduced: 2022-08-23
 
+    - url: https://webcompat.com/issues/108187
+      site: https://us.gozney.com/blogs/recipes/chicken-parm-pizza-recipe
+      platform:
+        - desktop
+      impact: workflow_broken
+      affects_users: all
+      last_reproduced: 2022-08-30
+
   testcases:
     - https://bug1521882.bmoattachments.org/attachment.cgi?id=9038313
