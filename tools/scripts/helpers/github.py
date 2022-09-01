@@ -11,7 +11,10 @@ logger = logging.getLogger(__name__)
 class GitHub:
     def get_headers(self) -> dict:
         token = os.environ.get("GITHUB_TOKEN")
-        assert token, "GitHub token is not found."
+
+        if not token:
+            return {}
+
         return {"Authorization": "token {}".format(token)}
 
     def fetch_timeline(self, timeline_url: str) -> list:
