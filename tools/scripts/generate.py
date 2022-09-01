@@ -125,7 +125,7 @@ def add_breakage(path: str, write: bool) -> Optional[str]:
             report = generate_breakage_report(item)
             reports.append(report)
         else:
-            reports.append(report)
+            reports.append(item)
     data["references"]["breakage"] = reports
     output_path = path if write else None
     write_yml(data, output_path)
