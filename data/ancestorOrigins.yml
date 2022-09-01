@@ -1,19 +1,30 @@
-# yaml-language-server: $schema=../schemas/entry.schema.json
-title: "Missing nonstandard location.ancestorOrigins"
+title: Missing nonstandard location.ancestorOrigins
 severity: normal
 user_base_impact: small
 tags:
   - dom
   - location
   - ancestorOrigins
-
 console_messages:
-  - "location.ancestorOrigins is undefined"
-
+  - location.ancestorOrigins is undefined
 references:
   breakage:
-    - https://webcompat.com/issues/63419
-    - https://webcompat.com/issues/80275
+    - url: https://webcompat.com/issues/63419
+      site: https://www.pgslot.com/member/topup/pgslot
+      platform:
+        - all
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2020-12-10'
+      resolution: site_changed
+
+    - url: https://webcompat.com/issues/80275
+      site: http://latorre.vedimenu.com/
+      platform:
+        - all
+      impact: site_broken
+      affects_users: all
+      last_reproduced: '2021-07-16'
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1085214
   telemetry:

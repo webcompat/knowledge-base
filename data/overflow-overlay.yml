@@ -89,9 +89,19 @@ references:
       site: https://nutmeg.morrisons.com/
       platform:
         - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/f0d4169daf26d66336e80ac5d1276e5150b72043/src/injections/css/bug1784195-nutmeg.morrisons.com-overflow.css
       impact: feature_broken
       affects_users: all
-      last_reproduced: 2022-06-08
+      last_reproduced: 2022-08-23
+
+    - url: https://webcompat.com/issues/108729
+      site: https://www.movistar.com.ar/productos-y-servicios/television/grilla-canales-tv
+      platform:
+        - desktop
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/f0d4169daf26d66336e80ac5d1276e5150b72043/src/injections/css/bug1784351-movistar.com.ar-overflow-overlay-fix.css
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-08-23
 
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1521631
