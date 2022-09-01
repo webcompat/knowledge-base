@@ -1,10 +1,13 @@
 import argparse
 import ruamel.yaml as yaml
 import os
+import subprocess
+import sys
 
 from logging import INFO, basicConfig, getLogger
 from pathlib import Path
 from slugify import slugify
+from typing import Optional
 from urllib.parse import urlparse
 
 from helpers.issue import Issue
@@ -82,7 +85,7 @@ def check_for_duplicates(bug_id: str) -> list:
     return duplicates
 
 
-def build_yml(bug_id: str) -> None:
+def create(bug_id: str, write: bool) -> Optional[str]:
     duplicates = check_for_duplicates(bug_id)
 
     if duplicates:
@@ -101,27 +104,91 @@ def build_yml(bug_id: str) -> None:
         logger.error(f"A file with the same name already exists: `{path}`, please edit it instead.")
         return
 
+    output_path = path if write else None
+    write_yml(data, output_path)
+    if write:
+        logger.info(f"{filename}.yml file was created for bug {bug_id} ({title})")
+    return output_path
+
+
+def add_breakage(path: str, write: bool) -> Optional[str]:
+    with open(path) as f:
+        data = yaml.safe_load(f)
+    if "references" not in data:
+        data["references"] = {}
+
+    issues = data["references"].get("breakage", [])
+
+    reports = []
+    for item in issues:
+        if isinstance(item, str):
+            report = generate_breakage_report(item)
+            reports.append(report)
+        else:
+            reports.append(item)
+    data["references"]["breakage"] = reports
+    output_path = path if write else None
+    write_yml(data, output_path)
+    return output_path
+
+
+def write_yml(data: dict, path: Optional[str]) -> None:
     y = yaml.YAML()
     y.indent(mapping=2, sequence=4, offset=2)
 
-    with open(path, 'w') as f:
-        y.dump(data, f)
-        logger.info(f"{filename}.yml file was created for bug {bug_id} ({title})")
+    if path is not None:
+        with open(path, "w") as f:
+            y.dump(data, f)
+    else:
+        y.dump(data, sys.stdout)
 
 
 def main() -> None:
     description = "Prefill yaml file with bugzilla bug data for knowledge base."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(
-        "--bug_id",
+        "--create",
         help="Bugzilla bug id.",
         type=str,
-        required=True,
+    )
+    parser.add_argument(
+        "--get-breakage-details",
+        help="Path to existing issue.",
+        type=str,
+    )
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Overwrite existing file if any, otherwise print to stdout",
+        default=False
+    )
+    parser.add_argument(
+        "--edit",
+        action="store_true",
+        help="Edit the resulting file in an editor. Implies --write.",
+        default=False
     )
 
     args = parser.parse_args()
-    build_yml(args.bug_id)
+    path = None
 
+    if args.edit:
+        args.write = True
+
+    if args.create:
+        path = create(args.create, args.write)
+    elif args.get_breakage_details:
+        path = add_breakage(args.get_breakage_details, args.write)
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+    if args.edit and path is not None:
+        editor = os.environ.get("VISUAL", os.environ.get("EDITOR"))
+        if not editor:
+            logger.error("Couldn't open editor, please set EDITOR environment variable")
+        else:
+            subprocess.call([editor, path])
 
 if __name__ == "__main__":
     main()
