@@ -5,6 +5,7 @@ from helpers.github import GitHub
 from helpers.utils import extract_url, to_datetime, extract_issue_number
 
 WEBCOMPAT_URL = "https://webcompat.com/issues/"
+MISSING_PLACEHOLDER = "[missing]"
 
 BROWSER_MAP = {
     "browser-fenix": "mobile",
@@ -23,9 +24,8 @@ RESOLVED_MAP = {
 
 SEVERITY_MAP = {
     "severity-minor": "minor_visual",
-    "severity-important":
-        "Suggested impact is `feature_broken` or `significant_visual` as issue has severity-important label.",
-    "severity-critical": "Suggested impact is `site_broken` or `feature_broken` as issue has severity-critical label.",
+    "severity-important": MISSING_PLACEHOLDER,
+    "severity-critical": MISSING_PLACEHOLDER,
     "type-unsupported": "unsupported_message"
 }
 
@@ -100,7 +100,7 @@ class WebcompatIssue:
         if severity_label:
             return SEVERITY_MAP[severity_label[0]]
 
-        return "Can't estimate impact, please enter it manually."
+        return MISSING_PLACEHOLDER
 
     def generate_report(self) -> dict:
         report = {
@@ -116,7 +116,7 @@ class WebcompatIssue:
             report["intervention"] = "Intervention is detected for this issue. Please locate it manually."
 
         report["impact"] = self.estimate_impact()
-        report["affects_users"] = f"Check the issue for more details: {self.title}."
+        report["affects_users"] = MISSING_PLACEHOLDER
 
         reproduced_date = self.get_last_reproduced()
         if reproduced_date:
