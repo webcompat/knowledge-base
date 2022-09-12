@@ -16,24 +16,168 @@ solutions:
 
 references:
   breakage:
-    - https://webcompat.com/issues/3551
-    - https://webcompat.com/issues/3607
-    - https://webcompat.com/issues/3631
-    - https://webcompat.com/issues/10144
-    - https://webcompat.com/issues/10768
-    - https://webcompat.com/issues/10725
-    - https://webcompat.com/issues/11740
-    - https://webcompat.com/issues/11848
-    - https://webcompat.com/issues/12124
-    - https://webcompat.com/issues/11595
-    - https://webcompat.com/issues/11870
-    - https://webcompat.com/issues/13391
-    - https://webcompat.com/issues/13334
-    - https://webcompat.com/issues/39820
-    - https://webcompat.com/issues/52867
-    - https://webcompat.com/issues/53807
-    - https://webcompat.com/issues/66859
-    - https://webcompat.com/issues/58604
+    - url: https://webcompat.com/issues/3551
+      site: http://www.mahaloot.net
+      platform:
+        - mobile
+      impact: minor_visual
+      affects_users: all
+      resolution: site_changed
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/3607
+      site: http://www.freejobalert.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      resolution: site_fixed
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/3631
+      site: https://www.irctc.co.in/eticketing/loginHome.jsf
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: some
+      resolution: site_changed
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/10144
+      site: https://www.onlinesbi.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_fixed
+      affects_users: all
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/10768
+      site: http://www.passportindia.gov.in/AppOnlineProject/welcomeLink
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/10725
+      site: http://www.passportindia.gov.in/AppOnlineProject/welcomeLink
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/11740
+      site: http://bssnews.net/index.php
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/11848
+      site: http://www.upsc.gov.in/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/12124
+      site: http://www.sevenhillshospital.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_changed
+      affects_users: all
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/11595
+      site: http://www.upsc.gov.in/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/11870
+      site: https://www.onlinesbi.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_fixed
+      affects_users: all
+      last_reproduced: '2017-10-30'
+
+    - url: https://webcompat.com/issues/13391
+      site: https://www.ceconline.edu
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_changed
+      affects_users: all
+      last_reproduced: '2017-11-12'
+
+    - url: https://webcompat.com/issues/13334
+      site: https://www.irctc.co.in/eticketing/pageUnderConstruction.jsf
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: some
+      resolution: site_changed
+      last_reproduced: '2017-11-12'
+
+    - url: https://webcompat.com/issues/39820
+      site: http://mangaldaimvm.org/
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_changed
+      affects_users: all
+      last_reproduced: '2019-09-17'
+
+    - url: https://webcompat.com/issues/52867
+      site: http://www.kpsc.kar.nic.in/
+      platform:
+        - mobile
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2020-06-04'
+
+    - url: https://webcompat.com/issues/53807
+      site: http://www.themostamazingwebsiteontheinternet.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
+    - url: https://webcompat.com/issues/66859
+      site: https://mybillview.bsnl.co.in/DL_EZ_GA/webresources/app/htmlformat?ke=040220212106510545332938836106a9cf318a1d644774b2c2#
+      platform:
+        - desktop
+      impact: minor_visual
+      resolution: site_changed
+      affects_users: all
+      last_reproduced: '2021-02-16'
+
+    - url: https://webcompat.com/issues/58604
+      site: http://vnit.ac.in/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2021-04-27'
+
+    - url: https://webcompat.com/issues/105973
+      site: https://bluehorizon.com/
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-30'
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=306344
     - https://bugzilla.mozilla.org/buglist.cgi?short_desc_type=allwordssubstr&short_desc=marquee&resolution=---&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Layout&product=Core&list_id=16137819

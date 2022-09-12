@@ -11,17 +11,29 @@ symptoms:
   - "The site is using `height: 0px;` and large percent-valued padding-bottom or padding-top on the parent element of the slider image"
 
 solutions:
-  interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1774490-rainews.it-gallery-fix.css
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1748455-reddit.com-gallery-image-width-fix.css
   workarounds:
     - "Adding pixel-valued padding instead of percent-valued or setting `height: auto` for the affected element."
 
 references:
   breakage:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1748339#c0
-    - https://webcompat.com/issues/97271
-    - https://webcompat.com/issues/105402
+    - url: https://webcompat.com/issues/97271
+      site: https://www.reddit.com/r/CitiesSkylines/comments/rmxuh7/ive_made_a_small_loop_for_buses_to_turn_around/
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1748455-reddit.com-gallery-image-width-fix.css
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-01-04'
+
+    - url: https://webcompat.com/issues/105402
+      site: https://www.rainews.it/photogallery/2022/06/fotorassegna-stampa-le-prime-pagine-dei-quotidiani-di-sabato-04-giugno--cd5414b3-65b9-429b-85d5-e53fadd59f4c.html
+      platform:
+        - all
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/81746891f9016a11610760c90e2e1c672deaf519/src/injections/css/bug1774490-rainews.it-gallery-fix.css
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-06-15'
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1748339
   testcases:

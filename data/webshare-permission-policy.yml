@@ -13,16 +13,45 @@ symptoms:
 solutions:
   notes:
     - While the standard is not finished yet, adding the `allow="web-share"` attrubute to the iFrame makes it work in all browsers.
-  interventions:
-    - https://github.com/mozilla-extensions/webcompat-addon/blob/8b3865cb772b2596549705d11ed3aa1a376c60cd/src/data/injections.js#L572-L581
 
 references:
   breakage:
-    - https://github.com/webcompat/web-bugs/issues/68473
-    - https://github.com/webcompat/web-bugs/issues/88374
-    - https://github.com/webcompat/web-bugs/issues/105859
-    - https://github.com/webcompat/web-bugs/issues/106938
-    - https://github.com/webcompat/web-bugs/issues/107286
+    - url: https://webcompat.com/issues/68473
+      site: https://code.or.jp/news/3075/
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/8b3865cb772b2596549705d11ed3aa1a376c60cd/src/data/injections.js#L572-L581
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-07-05'
+
+    - url: https://webcompat.com/issues/88374
+      site: https://sway.office.com/howtosway
+      platform:
+        - desktop
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/8b3865cb772b2596549705d11ed3aa1a376c60cd/src/data/injections.js#L572-L581
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2021-10-25'
+
+    - url: https://webcompat.com/issues/106938
+      site: https://myanimelist.net/anime/5079/Kurokami_The_Animation
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/8b3865cb772b2596549705d11ed3aa1a376c60cd/src/data/injections.js#L572-L581
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-07-21'
+
+    - url: https://webcompat.com/issues/107286
+      site: https://snapcraft.io/blog/bring-multi-platform-apps-to-linux-desktop-with-flutter-3
+      platform:
+        - mobile
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/8b3865cb772b2596549705d11ed3aa1a376c60cd/src/data/injections.js#L572-L581
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-07-21'
+
   platform_issues:
     - https://bugzilla.mozilla.org/show_bug.cgi?id=1737541
   standards_discussions:
