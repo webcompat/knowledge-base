@@ -128,5 +128,8 @@ references:
       affects_users: all
       last_reproduced: 2022-08-30
 
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1521882
+
   testcases:
     - https://bug1521882.bmoattachments.org/attachment.cgi?id=9038313
