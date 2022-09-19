@@ -92,7 +92,7 @@ def create(bug_id: str, write: bool) -> Optional[str]:
         logger.error(
             f"A duplicate bug url has been found in {','.join(duplicates)}"
         )
-        return
+        return None
 
     data = build_obj(bug_id)
     title = data["title"]
@@ -102,7 +102,7 @@ def create(bug_id: str, write: bool) -> Optional[str]:
 
     if os.path.exists(path):
         logger.error(f"A file with the same name already exists: `{path}`, please edit it instead.")
-        return
+        return None
 
     output_path = path if write else None
     write_yml(data, output_path)
@@ -189,6 +189,7 @@ def main() -> None:
             logger.error("Couldn't open editor, please set EDITOR environment variable")
         else:
             subprocess.call([editor, path])
+
 
 if __name__ == "__main__":
     main()

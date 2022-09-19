@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Dict
 
 from helpers.github import GitHub
 from helpers.utils import extract_url, to_datetime, extract_issue_number
@@ -82,14 +82,76 @@ class WebcompatIssue:
 
         return browser
 
-    def get_last_reproduced(self) -> str:
-        if self.milestone in TRACKED_MILESTONES:
-            for timeline_item in self.timeline:
-                if (timeline_item["event"] == "milestoned"
-                        and timeline_item["milestone"]["title"] == self.milestone):
-                    return to_datetime(timeline_item["created_at"]).strftime('%Y-%m-%d')
+    def build_milestone_dates_map(self) -> Dict[str, dict]:
+        """Builds milestones->dates map for further processing.
 
-        return ""
+        Returns a dictionary for each milestone event with
+        dates it has been milestoned with or demilestoned.
+
+        Example structure:
+        {
+            'needsdiagnosis': {
+                'milestoned': '2020-09-21T14:52:00Z',
+                'milestoned_from': 'needstriage',
+                'demilestoned': '2021-04-27T05:59:20Z'
+            }
+        }
+        """
+        milestones_dates = {}  # type: Dict[str, dict]
+        actions = ["milestoned", "demilestoned"]
+
+        for index, timeline_item in enumerate(self.timeline):
+            if timeline_item["event"] in actions:
+                milestone = timeline_item["milestone"]["title"]
+                action = timeline_item["event"]
+
+                if milestone not in milestones_dates:
+                    milestones_dates[milestone] = {}
+
+                milestones_dates[milestone][action] = timeline_item["created_at"]
+
+                if action == "milestoned" and self.timeline[index-1]["event"] == "demilestoned":
+                    milestones_dates[milestone]["milestoned_from"] = self.timeline[index-1]["milestone"]["title"]
+
+        return milestones_dates
+
+    def last_reproduced_for_tracked(self, milestones_dates: dict) -> str:
+        """Attempt to find last reproduced date for issues with "active" milestones."""
+
+        if "milestoned" in milestones_dates[self.milestone]:
+            return to_datetime(milestones_dates[self.milestone]["milestoned"]).strftime('%Y-%m-%d')
+
+        return MISSING_PLACEHOLDER
+
+    def last_reproduced_for_resolved(self, milestones_dates: dict) -> str:
+        """Attempt to find last reproduced date for resolved issues.
+
+        Finds a previous milestone and if it's considered "active",
+        returns the date the issue has been moved to that milestone.
+        """
+
+        if "milestoned_from" in milestones_dates[self.milestone]:
+            previous_milestone = milestones_dates[self.milestone]["milestoned_from"]
+
+            if previous_milestone in TRACKED_MILESTONES:
+                if (previous_milestone in milestones_dates
+                        and "milestoned" in milestones_dates[previous_milestone]):
+                    return to_datetime(milestones_dates[previous_milestone]["milestoned"]).strftime('%Y-%m-%d')
+
+        return MISSING_PLACEHOLDER
+
+    def get_last_reproduced(self) -> str:
+        milestones_dates = self.build_milestone_dates_map()
+
+        if self.milestone not in milestones_dates:
+            return MISSING_PLACEHOLDER
+
+        if self.milestone in TRACKED_MILESTONES:
+            return self.last_reproduced_for_tracked(milestones_dates)
+        elif self.milestone in RESOLVED_MAP.keys():
+            return self.last_reproduced_for_resolved(milestones_dates)
+
+        return MISSING_PLACEHOLDER
 
     def estimate_impact(self) -> str:
         if "type-unsupported" in self.labels:
@@ -117,10 +179,7 @@ class WebcompatIssue:
 
         report["impact"] = self.estimate_impact()
         report["affects_users"] = MISSING_PLACEHOLDER
-
-        reproduced_date = self.get_last_reproduced()
-        if reproduced_date:
-            report["last_reproduced"] = reproduced_date
+        report["last_reproduced"] = self.get_last_reproduced()
 
         return report
 
