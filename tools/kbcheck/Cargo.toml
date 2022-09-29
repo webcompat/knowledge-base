@@ -14,4 +14,4 @@ serde_yaml="0.9"
 walkdir = "2"
 url={ version = "2", features = ["serde"] }
 thiserror = "1"
-clap = { version = "3", features = ["derive"] }
+clap = { version = "4", features = ["derive"] }
