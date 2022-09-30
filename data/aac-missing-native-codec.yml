@@ -1,0 +1,59 @@
+title: AAC audio decoding fails if there is no native codec
+severity: low
+user_base_impact: small
+
+tags:
+  - media
+
+notes: |
+  Due to patent issues, Firefox does not ship an AAC codec. Instead, it relies
+  on the operating system to provide one. In certain circumstances, it's
+  possible that the OS doesn't provide a codec, thus breaking AAC playback.
+
+symptoms:
+  - Issues with Audio or Video playback
+  - Error messages claiming that a codec is not supported
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/9557
+      site: http://positivr.fr/bucheron-cabestan-medieval-bois/
+      platform:
+        - linux
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2017-09-02
+
+    - url: https://webcompat.com/issues/14002
+      site: https://twitter.com/
+      platform:
+        - linux
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2017-12-02
+
+    - url: https://webcompat.com/issues/16422
+      site: https://puri.sm/shop/librem-5/
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2018-04-11
+
+    - url: https://webcompat.com/issues/25449
+      site: https://www5.fmovies.to/
+      platform:
+        - linux
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2019-02-05
+
+    - url: https://webcompat.com/issues/99365
+      site: https://time.com/6143009/ukraine-crisis-change-europe/?utm_source=pocket-newtab-intl-en
+      platform:
+        - linux
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-02-09
