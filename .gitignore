@@ -8,7 +8,7 @@
 # Build output from the kbcheck tool
 target/
 
-
 # Python
-.mypy_cache/
 .env
+.mypy_cache/
+env/
