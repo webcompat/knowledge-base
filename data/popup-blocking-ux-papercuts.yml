@@ -1,0 +1,29 @@
+title: Popup Blocking causing UX papercuts
+severity: normal
+user_base_impact: unknown
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/107903
+      site: https://product.cityalarmpermit.com/FAMSCitizen/Calgary/applyonline.htm
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-09-30
+
+    - url: https://webcompat.com/issues/85017
+      site: https://kepco.jp/miruden/servicetop/newslist#3
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: 2022-09-30
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1699799
+      site: https://mail.google.com
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: some
+      last_reproduced: 2022-06-27
