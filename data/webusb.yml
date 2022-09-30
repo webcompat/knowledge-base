@@ -1,0 +1,47 @@
+title: Sites breaking due to the lack of WebUSB support
+severity: high
+user_base_impact: small
+
+tags:
+  - mozilla-position-negative
+
+symptoms:
+  - Users see an error message claiming that their browser is unsupported
+  - Connecting to some kind of hardware fails
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/100260
+      site: https://www.stemplayer.com/
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-09-30
+
+    - url: https://webcompat.com/issues/22829
+      site: https://www.numworks.com/
+      platform:
+        - all
+      impact: unsupported_message
+      affects_users: all
+      last_reproduced: 2022-09-30
+
+    - url: https://webcompat.com/issues/62926
+      site: https://webadb.github.io/
+      platform:
+        - all
+      impact: unsupported_message
+      affects_users: all
+      last_reproduced: 2022-09-30
+
+    - url: https://webcompat.com/issues/66768
+      site: https://app.webadb.com/
+      platform:
+        - all
+      impact: unsupported_message
+      affects_users: all
+      last_reproduced: 2022-09-30
+
+  standards_positions:
+    - https://mozilla.github.io/standards-positions/#webusb
