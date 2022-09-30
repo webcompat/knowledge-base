@@ -1,0 +1,58 @@
+title: Sites breaking due to the lack of Network Information API support
+severity: low
+user_base_impact: small
+
+tags:
+  - mozilla-position-negative
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/67436
+      site: https://www.espressoparts.com/
+      platform:
+        - all
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-06-08
+      resolution: site_fixed
+
+    - url: https://webcompat.com/issues/89542
+      site: https://www.chanel.com/en_CA/fashion/products/handbags.html
+      platform:
+        - mobile
+      resolution: site_fixed
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/630605aae75fc2672f724e38c81e62b408d5cebd/src/injections/js/bug1751065-chanel.com-effectiveType-shim.js
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-01-03
+
+    - url: https://webcompat.com/issues/95799
+      site: https://gheed.com/giveaways/g-QGxK
+      platform:
+        - mobile
+      resolution: site_changed
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-12-06
+
+    - url: https://webcompat.com/issues/99671
+      site: https://www.zee5.com/
+      platform:
+        - mobile
+      resolution: site_fixed
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/36cfa49700b499e23c97067eb7410072ce74ab44/src/injections/js/bug1756692-effectiveType-shim.js
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2022-02-17
+
+    - url: https://webcompat.com/issues/104838
+      site: https://open.toutiao.com/a6966170645738783269/?__publisher_id__=4221768740&channel_id=88805669586&dt=R7Plusm&fr=normal&from_gid=6956432767005491719&gy=2cb247169b873bc0f78107b5a569f282d129ede38a56330ac9edc00743af6ba6f301248cddcb5b2376b2b286f219a9938e69c1c33941e7892a56b16c8617ebb0b1cd50cb401ece07ea7107a158f0b3b0cb95539be68ebda39413081f8dfe1d7ef83abb830d081642aa72639dc2c3e34109c846be7df23727854e76248ce909576f29134ee85086a27255c0745783a0b2f39d213d1a0ee09adb787da51569e05f525c3ad201d6638c&item_id=6966170645738783269&label=related_news&oppo_anchor=&react_gray=1&req_id=2021070203235101015120108107B22076&utm_campaign=open&utm_medium=webview&utm_source=o_llq_api
+      platform:
+        - mobile
+      impact: site_broken
+      intervention: https://github.com/mozilla-extensions/webcompat-addon/blob/d52fa58d2608a8f9f202559795a363432a96dd0a/src/injections/js/bug1784302-effectiveType-shim.js
+      affects_users: all
+      last_reproduced: 2022-09-30
+
+  standards_positions:
+    - https://mozilla.github.io/standards-positions/#netinfo
