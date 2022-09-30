@@ -1,11 +1,17 @@
-import requests
 import argparse
-import yaml
+import ruamel.yaml as yaml
 import os
+import subprocess
+import sys
+
 from logging import INFO, basicConfig, getLogger
 from pathlib import Path
 from slugify import slugify
+from typing import Optional
 from urllib.parse import urlparse
+
+from helpers.issue import Issue
+from helpers.bugzilla import fetch_bug_by_id
 
 basicConfig(level=INFO)
 logger = getLogger("generate_script")
@@ -14,7 +20,6 @@ cwd = os.getcwd()
 DATA_PATH = os.path.join(cwd, 'data')
 
 BUGZILLA_URL = "https://bugzilla.mozilla.org/show_bug.cgi?id="
-BUGZILLA_API = "https://bugzilla.mozilla.org/rest/bug/"
 
 BREAKAGE_STR = ["webcompat", "mozilla-mobile"]
 PLATFORM_STR = ["bugs.chromium.org", "bugs.webkit.org"]
@@ -22,39 +27,34 @@ PLATFORM_STR = ["bugs.chromium.org", "bugs.webkit.org"]
 YAML_FILE_EXT = ("*.yaml", "*.yml")
 
 
-def fetch_bug_by_id(bug_id: str) -> dict:
-    url = BUGZILLA_API + bug_id
-    params = {"include_fields": "summary,see_also"}
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    result = response.json()
-    return result["bugs"][0]
+def generate_breakage_report(issue_url: str) -> dict:
+    issue = Issue(issue_url)
+    report = issue.generate_report()
+    return report
 
 
-def split_see_also_by_type(see_also_list: list, bug_id: str) -> dict:
-    lists = {
-        "breakage": [f"{BUGZILLA_URL}{bug_id}#c0"],
-        "platform": [BUGZILLA_URL + bug_id]
-    }
+def split_see_also_by_type(see_also_list: list, bug_id: str) -> tuple:
+    breakage = []
+    platform = [BUGZILLA_URL + bug_id]
 
     for item in see_also_list:
         if any(bs in item for bs in BREAKAGE_STR):
-            lists["breakage"].append(item)
+            breakage.append(generate_breakage_report(item))
 
         if any(ps in item for ps in PLATFORM_STR):
-            lists["platform"].append(item)
+            platform.append(item)
 
-    return lists
+    return breakage, platform
 
 
 def build_obj(bug_id: str) -> dict:
     bug = fetch_bug_by_id(bug_id)
-    lists = split_see_also_by_type(bug["see_also"], bug_id)
+    breakage, platform = split_see_also_by_type(bug["see_also"], bug_id)
     data = {
         "title": bug["summary"],
         "references": {
-            "breakage": lists["breakage"],
-            "platform_issues": lists["platform"]
+            "breakage": breakage,
+            "platform_issues": platform
         }
     }
 
@@ -85,14 +85,14 @@ def check_for_duplicates(bug_id: str) -> list:
     return duplicates
 
 
-def build_yml(bug_id: str) -> None:
+def create(bug_id: str, write: bool) -> Optional[str]:
     duplicates = check_for_duplicates(bug_id)
 
     if duplicates:
         logger.error(
             f"A duplicate bug url has been found in {','.join(duplicates)}"
         )
-        return
+        return None
 
     data = build_obj(bug_id)
     title = data["title"]
@@ -102,25 +102,93 @@ def build_yml(bug_id: str) -> None:
 
     if os.path.exists(path):
         logger.error(f"A file with the same name already exists: `{path}`, please edit it instead.")
-        return
+        return None
 
-    with open(path, 'w') as f:
-        yaml.dump(data, f, sort_keys=False, default_flow_style=False)
+    output_path = path if write else None
+    write_yml(data, output_path)
+    if write:
         logger.info(f"{filename}.yml file was created for bug {bug_id} ({title})")
+    return output_path
+
+
+def add_breakage(path: str, write: bool) -> Optional[str]:
+    with open(path) as f:
+        data = yaml.safe_load(f)
+    if "references" not in data:
+        data["references"] = {}
+
+    issues = data["references"].get("breakage", [])
+
+    reports = []
+    for item in issues:
+        if isinstance(item, str):
+            report = generate_breakage_report(item)
+            reports.append(report)
+        else:
+            reports.append(item)
+    data["references"]["breakage"] = reports
+    output_path = path if write else None
+    write_yml(data, output_path)
+    return output_path
+
+
+def write_yml(data: dict, path: Optional[str]) -> None:
+    y = yaml.YAML()
+    y.indent(mapping=2, sequence=4, offset=2)
+
+    if path is not None:
+        with open(path, "w") as f:
+            y.dump(data, f)
+    else:
+        y.dump(data, sys.stdout)
 
 
 def main() -> None:
     description = "Prefill yaml file with bugzilla bug data for knowledge base."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(
-        "--bug_id",
+        "--create",
         help="Bugzilla bug id.",
         type=str,
-        required=True,
+    )
+    parser.add_argument(
+        "--get-breakage-details",
+        help="Path to existing issue.",
+        type=str,
+    )
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Overwrite existing file if any, otherwise print to stdout",
+        default=False
+    )
+    parser.add_argument(
+        "--edit",
+        action="store_true",
+        help="Edit the resulting file in an editor. Implies --write.",
+        default=False
     )
 
     args = parser.parse_args()
-    build_yml(args.bug_id)
+    path = None
+
+    if args.edit:
+        args.write = True
+
+    if args.create:
+        path = create(args.create, args.write)
+    elif args.get_breakage_details:
+        path = add_breakage(args.get_breakage_details, args.write)
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+    if args.edit and path is not None:
+        editor = os.environ.get("VISUAL", os.environ.get("EDITOR"))
+        if not editor:
+            logger.error("Couldn't open editor, please set EDITOR environment variable")
+        else:
+            subprocess.call([editor, path])
 
 
 if __name__ == "__main__":
