@@ -1,0 +1,23 @@
+title: Wrong length is shown for AAC media
+severity: low
+user_base_impact: small
+
+tags:
+  - media
+
+symptoms:
+  - Video or Audio player UIs show the wrong length for media with AAC audio
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/74161
+      site: https://www.radiozwickau.de/suche/?qu=wewobau&cHash=0b5527814ba1233dbfc506c07450e1ef#!/beitrag/wewobau-und-bsv-wollen-gemeinsam-gewinnen-686626/
+      platform:
+        - desktop
+      impact: minor_visual
+      affects_users: some
+      last_reproduced: 2022-09-30
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1510248
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1703812
