@@ -1,0 +1,23 @@
+title: AAC audio with sample rates over 48 kHz not supported on Windows
+severity: low
+user_base_impact: small
+
+tags:
+  - media
+
+symptoms:
+  - Audio playback might fail without apparent reason
+  - Sites that dynamically generate high-resolution audio (DABs, etc.) might fail
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/6226
+      site: http://ecchi.iwara.tv/videos/o93m3ua3vmu6qwrwr
+      platform:
+        - windows
+      impact: feature_broken
+      affects_users: few
+      last_reproduced: 2022-09-30
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1698639
