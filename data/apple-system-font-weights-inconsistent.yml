@@ -1,0 +1,14 @@
+title: -apple-system Font Weights Inconsistent with Safari
+severity: normal
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/109407
+      site: https://webkit.org/blog/12179/the-focus-indicated-pseudo-class-focus-visible/
+      platform:
+        - macos
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: '2022-08-29'
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1713039
