@@ -1,0 +1,17 @@
+title: When focused element is removed, fire blur event on it
+severity: normal
+user_base_impact: small
+
+notes: No known active breakage, but multiple bug reports by surprised developers.
+
+tags:
+  - dom
+  - focus
+  - events
+
+references:
+  breakage: []
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=559561
+  testcases:
+    - https://jsfiddle.net/k8jgor3b/2/
