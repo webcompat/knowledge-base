@@ -1,0 +1,15 @@
+title: Margin on <br> affects layout, unlike on other browsers
+severity: normal
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/58591
+      site: https://www.cincork.com/courses/index.html?courses.course_type=APR
+      platform:
+        - desktop
+      resolution: site_fixed
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2020-09-23'
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1621387
