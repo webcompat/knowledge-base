@@ -1,0 +1,36 @@
+title: SVG images with width or height only set in CSS rules are not visible (in intrinsically-sized
+  block, e.g. flex item or float)
+
+severity: low
+user_base_impact: unknown
+
+tags:
+  - css
+  - flexbox
+  - float
+  - svg
+
+symptoms:
+  - "Images that have svg as a source attribute in a flex (or float) parent container are not visible"
+  - "SVG images with width or height only set in CSS rules have zero width and height"
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/14143
+      site: https://travel.state.gov/content/travel/en/contact-us.html
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2017-12-11'
+
+    - url: https://webcompat.com/issues/109008
+      site: https://www.digital.go.jp/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2022-10-11'
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1409529
