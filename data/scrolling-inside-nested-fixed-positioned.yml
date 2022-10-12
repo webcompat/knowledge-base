@@ -1,0 +1,35 @@
+title: Scrolling doesn't work inside fixed position element (mouse/touch scroll events
+  get blocked by nested fixedpos overlay)
+
+severity: low
+user_base_impact: unknown
+tags:
+  - css
+  - scroll
+
+symptoms:
+  - "Scrolling doesn't work in a fixed position element because it is a child of another fixedpos scrollable element"
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/36587
+      site: https://www.mediaworld.it/catalogo/piccoli-elettrodomestici/cura-del-corpo-e-viso/rasoi/f/marca-philips?displayMode=grid#
+      platform:
+        - mobile
+      impact: workflow_broken
+      affects_users: all
+      last_reproduced: '2019-08-14'
+      resolution: site_changed
+
+    - url: https://webcompat.com/issues/61689
+      site: https://xichlo.owst.jp/page1
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2020-11-16'
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1573918
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=778000
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1265239
