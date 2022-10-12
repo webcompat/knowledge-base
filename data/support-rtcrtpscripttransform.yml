@@ -1,0 +1,45 @@
+title: Support RTCRtpScriptTransform (formerly webrtc insertable streams)
+
+severity: normal
+user_base_impact: unknown
+
+tags:
+  - webrtc
+  - encryption
+
+symptoms:
+  - "No support for insertable streams for End-to-end encryption (e2ee) in WebRTC conferences that provides additional layer of security"
+
+references:
+  breakage:
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1631263
+      site: https://meet.jit.si/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-10-12'
+      notes: "jitsi has added support for window.RTCRtpScriptTransform in https://github.com/jitsi/lib-jitsi-meet/commit/61c977f70ab353013a40e7daaeb5fc3713526984, see also https://jitsi.org/security/"
+
+    - url: https://webcompat.com/issues/76550
+      site: https://facetime.apple.com/facetime
+      platform:
+        - desktop
+      impact: unsupported_message
+      affects_users: all
+      last_reproduced: '2022-10-12'
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1793464
+      site: https://mega.io/
+      platform:
+        - desktop
+      impact: workflow_broken
+      affects_users: some
+      notes: https://github.com/meganz/webclient/issues/101#issuecomment-1110438062
+      last_reproduced: '2022-10-03'
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1631263
+
+  standards_discussions:
+    - https://github.com/mozilla/standards-positions/issues/330
