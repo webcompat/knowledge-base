@@ -1,0 +1,46 @@
+title: drawImage() fails silently when drawing an SVG image without width or height
+
+severity: high
+user_base_impact: unknown
+
+notes: "This bug doesn't have a lot webcompat issues filed, however has 10 duplicates filed
+  on bugzilla by developers experiencing the issue"
+
+tags:
+  - canvas
+  - svg
+
+symptoms:
+  - "Using drawImage() to draw an svg in canvas fails with no errors if width or height are not specified (i.e. 0)"
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/64352
+      site: https://vhutemasmap.netlify.app/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: some
+      last_reproduced: '2022-10-12'
+
+    - url: https://webcompat.com/issues/101816
+      site: https://maskable.app/editor
+      platform:
+        - all
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: '2022-04-04'
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1374049
+      site: https://www.scirra.com/labs/bugs/ffdrawsvg/
+      platform:
+        - desktop
+      impact: significant_visual
+      affects_users: all
+      last_reproduced: '2017-06-18'
+      resolution: site_changed
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=700533
+  testcases:
+    - https://bugzilla.mozilla.org/attachment.cgi?id=9270639
