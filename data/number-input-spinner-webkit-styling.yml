@@ -1,0 +1,22 @@
+title: "Missing support for `::-webkit-outer-spin-button` and `::-webkit-inner-spin-button`"
+severity: low
+tags:
+  - css
+  - input
+  - nonstandard
+
+symptoms:
+  - A number input shows spinner buttons in FIrefox, but not in other browsers
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/108327
+      site: https://www.flipkart.com/rv/accounts/editprofile
+      platform:
+        - all
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-10-13
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1355574
