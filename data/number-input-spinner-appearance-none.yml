@@ -1,0 +1,21 @@
+title: '`<input type="number">` shows spinner buttons with `appearance: none`'
+severity: normal
+tags:
+  - input
+
+symptoms:
+  - Sites show the spinner buttons for number inputs in Firefox but not in Chrome
+  - "`appearance: none` does not remove spinner buttons in Firefox"
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/109468
+      site: https://www.clalit.co.il/he/Pages/default.aspx
+      platform:
+        - all
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-09-13
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1786154
