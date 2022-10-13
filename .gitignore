@@ -9,6 +9,7 @@
 target/
 
 # Python
+__pycache__/
 .env
 .mypy_cache/
 env/
