@@ -1,0 +1,20 @@
+title: '`<input type="number">` shows spinners on Android, contradicting other browsers'
+severity: normal
+tags:
+  - input
+
+symptoms:
+  - Sites show the spinner buttons for number inputs in Firefox for Android, but not in other browsers
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/107783
+      site: http://www.aastocks.com/tc/mobile/quote.aspx?symbol=5
+      platform:
+        - mobile
+      impact: minor_visual
+      affects_users: all
+      last_reproduced: 2022-09-13
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1790700
