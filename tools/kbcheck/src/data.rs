@@ -29,6 +29,13 @@ pub fn read_json(path: &Path) -> Result<serde_json::Value, DataError> {
     Ok(serde_json::from_reader(reader)?)
 }
 
+fn is_resolved(entry: &DirEntry) -> bool {
+    entry.path()
+         .to_str()
+         .map(|s| s == "data/resolved")
+         .unwrap_or(false)
+}
+
 /// Iterator over DirEntry values corresponding to knowledge base data
 /// files
 pub fn iter_data_files(root_path: &Path) -> impl Iterator<Item = Result<DirEntry, DataError>> {
@@ -36,6 +43,7 @@ pub fn iter_data_files(root_path: &Path) -> impl Iterator<Item = Result<DirEntry
 
     WalkDir::new(&data_path)
         .into_iter()
+        .filter_entry(|e| !is_resolved(e))
         .filter(|maybe_entry| {
             if let Ok(entry) = maybe_entry {
                 let path = entry.path();
