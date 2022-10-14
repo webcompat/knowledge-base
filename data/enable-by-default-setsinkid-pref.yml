@@ -1,0 +1,75 @@
+title: Enable setSinkId pref by default
+
+severity: normal
+user_base_impact: unknown
+notes: setSinkId is currently behind a "media.setsinkid.enabled" pref
+
+tags:
+  - audiooutput
+  - webrtc
+
+symptoms:
+  - "Can't switch audio output device in a video call"
+  - "Audio output selector missing when joining a conference"
+  - "Navigator.mediaDevices.enumerateDevices() does not return output devices"
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/20350
+      site: https://meet.google.com/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-10-13'
+
+    - url: https://webcompat.com/issues/41739
+      site: https://web.skype.com/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2019-11-08'
+
+    - url: https://webcompat.com/issues/43351
+      site: https://inventaire.io/add/scan
+      platform:
+        - mobile
+      impact: workflow_broken
+      affects_users: some
+      last_reproduced: '2019-11-27'
+
+    - url: https://webcompat.com/issues/53808
+      site: https://voice.google.com/u/0/voicemail
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2020-09-05'
+
+    - url: https://webcompat.com/issues/71420
+      site: https://edu.meet.garr.it
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-10-13'
+
+    - url: https://webcompat.com/issues/69160
+      site: https://meet.google.com/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-10-13'
+
+    - url: https://bugzilla.mozilla.org/show_bug.cgi?id=1631672
+      site: https://meet.jit.si/
+      platform:
+        - desktop
+      impact: feature_broken
+      affects_users: some
+      last_reproduced: '2022-10-13'
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1498512
