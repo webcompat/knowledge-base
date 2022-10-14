@@ -130,7 +130,7 @@ fn load_and_validate_files(root_path: &Path) -> Result<(EntriesMap, Failures), V
     let mut errors = Vec::new();
     let schema = load_schema(root_path)?;
 
-    for maybe_dir_entry in iter_data_files(root_path) {
+    for maybe_dir_entry in iter_data_files(root_path, true) {
         let entry = maybe_dir_entry?;
         let path = entry.path();
         let (maybe_entry, file_errors) = load_and_validate_file(&schema, path)?;

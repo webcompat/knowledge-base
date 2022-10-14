@@ -98,7 +98,7 @@ pub fn entries_by_score(
 ) -> Result<Vec<(PathBuf, Entry, f64)>, data::DataError> {
     let mut scores = Vec::new();
     let entries = if data_paths.is_empty() {
-        data::load_all(root_path)?
+        data::load_all(root_path, false)?
     } else {
         data::load_paths(root_path, data_paths)?
     };

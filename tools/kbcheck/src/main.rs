@@ -35,7 +35,7 @@ enum Commands {
 
 fn get_tags(root_path: &Path) -> Result<BTreeMap<String, (String, u64)>> {
     let mut tags = BTreeMap::new();
-    for entry in data::load_all(root_path)?.values() {
+    for entry in data::load_all(root_path, true)?.values() {
         for tag in entry.tags.iter() {
             let canonical_tag = tag.to_lowercase();
             if !tags.contains_key(&canonical_tag) {
