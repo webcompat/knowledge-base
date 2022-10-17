@@ -43,5 +43,13 @@ references:
       affects_users: all
       last_reproduced: 2022-09-30
 
+    - url: https://webcompat.com/issues/112423
+      site: https://webminidisc.com/
+      platform:
+        - all
+      impact: unsupported_message
+      affects_users: all
+      last_reproduced: 2022-10-17
+
   standards_positions:
     - https://mozilla.github.io/standards-positions/#webusb
