@@ -1,0 +1,20 @@
+title: Missing support for ARIA attribute reflection
+severity: normal
+tags:
+  - dom
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/112375
+      site: https://www.mercadolivre.com.br
+      platform:
+        - mobile
+      impact: feature_broken
+      affects_users: all
+      last_reproduced: 2022-10-24
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1785412
+
+  testcases:
+    - https://wpt.live/html/dom/aria-attribute-reflection.html
