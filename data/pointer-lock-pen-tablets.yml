@@ -1,0 +1,12 @@
+title: Pointer Locks don't work reliably on Pen Tablets
+severity: normal
+user_base_impact: small
+tags:
+  - input
+
+symptoms:
+  - Applications using the Pointer Lock API will parse the input as a constant movement in one direction, with high speed.
+
+references:
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1799928
