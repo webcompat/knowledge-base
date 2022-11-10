@@ -1,0 +1,23 @@
+title: Pointer Locks get exited when touchscreen inputs are processed
+severity: normal
+user_base_impact: small
+tags:
+  - input
+
+symptoms:
+  - Applications using touch screen inputs might not work
+  - Browser games automatically pause themselves
+
+references:
+  breakage:
+    - url: https://webcompat.com/issues/70422
+      site: https://neverball.github.io/
+      platform:
+        - mobile
+      impact: site_broken
+      affects_users: all
+      last_reproduced: 2021-04-24
+      resolution: site_fixed
+
+  platform_issues:
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1799911
