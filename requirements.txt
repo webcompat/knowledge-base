@@ -1,4 +1,4 @@
-mypy==0.982
+mypy==1.0.1
 pre-commit==2.20.0
 python-dotenv==0.21.0
 python-slugify==6.1.2
