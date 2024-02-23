@@ -1,0 +1,74 @@
+<!doctype html>
+<title>Score webcompat knowledge base bugs</title>
+<script src="scorebug.js"></script>
+
+<style>
+ul {
+    list-style: none;
+    padding: 0;
+}
+li > ul {
+  padding-left: 2em;
+}
+li {
+  font-weight: bold;
+}
+li ul li {
+  font-weight: normal;
+}
+label > input {
+  font-weight: normal;
+  margin-left: 1em;
+}
+
+</style>
+
+<h1>WebCompat Bug Scorer</h1>
+
+<div class="input">
+  <ul>
+    <li><label>Bug id <input id="bug-id"></label>
+
+    <li><label>URL <input id="url"></label>
+
+    <li>Platform
+      <ul>
+        <li><input type=checkbox checked id="platform-windows" value="0.7"><label for=platform-windows>Windows</label>
+        <li><input type=checkbox checked id="platform-mac" value="0.2"><label for=platform-mac>macOS</label>
+        <li><input type=checkbox checked id="platform-linux" value="0.1"><label for=platform-linux>Linux</label>
+        <li><input type=checkbox checked id="platform-mobile" value="1"><label for="platform-mobile">Mobile</label>
+      </ul>
+
+    <li>Impact
+      <select id="impact">
+        <option value=100>Site broken
+        <option value=100>Unsupported / Blocked
+        <option value=60>Workflow broken
+        <option value=30>Feature broken
+        <option value=20>Significant visual
+        <option value=1>Minor visual
+        <option value=20>Unsupported warning
+      </select>
+
+    <li>Affects users
+      <select id="affects">
+        <option value=1>All
+        <option value=0.3>Some
+        <option value=0.1>Few
+      </select>
+
+  </ul>
+
+  <button onclick=score()>Compute Score</button>
+</div>
+
+<div id="output" hidden>
+  <table>
+    <tr><th>Domain Rank: <td><output id="domain-rank"></output>
+    <tr><th>Severity Score: <td><output id="severity-score"></output>
+    <tr><th>Priority Score: <td><output id="priority-score"></output>
+    <tr><th>Overall Score: <td><output id="score"></output>
+    <tr><th>Suggested Priority: <td><output id="priority"></output>
+    <tr><th>Suggested Severity: <td><output id="severity"></output>
+  </ul>
+</div>
