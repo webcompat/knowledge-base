@@ -3,3 +3,4 @@
 members = [
   "tools/kbcheck"
 ]
+resolver = "2"
