@@ -8,7 +8,7 @@ edition = "2021"
 [dependencies]
 chrono = "0.4"
 clap = { version = "4", features = ["derive"] }
-jsonschema = "0.16"
+jsonschema = "0.17"
 miette = { version="5", features = ["fancy"] }
 reqwest = "0.11"
 serde = "1"
