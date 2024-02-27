@@ -8,12 +8,14 @@ function getSeverity(data, siteRank) {
 
   const severityScore = Math.round(impactScore * affectsModifier * platformModifier);
   let severity = "S4";
-  if (severityScore > 50) {
-    if (siteRank && siteRank <= 500) {
+  if (severityScore >= 100) {
+    if (siteRank && siteRank <= 100) {
       severity = "S1";
     } else {
       severity = "S2";
     }
+  } else if (severityScore > 50) {
+    severity = "S2";
   } else if (severityScore > 25) {
     severity = "S3";
   } else {
