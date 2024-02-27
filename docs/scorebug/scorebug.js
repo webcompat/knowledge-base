@@ -1,21 +1,3 @@
-async function urlRank(url) {
-  const parsedUrl = new URL(url);
-  let targetDomain = parsedUrl.host;
-  let rank = null;
-  while (targetDomain.includes(".")) {
-    const resp = await fetch(`https://tranco-list.eu/api/ranks/domain/${encodeURI(targetDomain)}?subdomains=true`);
-    const data = await resp.json();
-    if (data && data.ranks.length) {
-      rank = data.ranks[0].rank;
-      break;
-    }
-    const [first, ...rest] = targetDomain.split(".");
-    targetDomain = rest.join(".");
-    // Avoid rate limits
-    await new Promise(resolve => setTimeout(resolve, 1000));
-  }
-  return {rank, rankedDomain: rank ? targetDomain : parsedUrl.host};
-}
 
 function getSeverity(data, siteRank) {
   const impactScore = parseInt(data.impact);
@@ -110,7 +92,7 @@ function setOutput(outputData) {
 async function score() {
   resetOutput();
   const data = readData();
-  const rank = await urlRank(data.url);
+  const rank = await rankUrl(data.url);
   const severity = getSeverity(data, rank.rank);
   const priority = getPriority(severity, rank.rank);
   const outputData = {
