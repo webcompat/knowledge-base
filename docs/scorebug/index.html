@@ -1,9 +1,12 @@
 <!doctype html>
 <title>Score webcompat knowledge base bugs</title>
 <script src="https://jgraham.github.io/tranco-subdomains/tranco.js"></script>
-<script src="scorebug.js"></script>
 
 <style>
+:root {
+  font-family: sans;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -22,41 +25,49 @@ label > input {
   margin-left: 1em;
 }
 
+th {
+  text-align: left;
+}
+
+dt {
+  font-weight: bold;
+}
+
 </style>
 
 <h1>WebCompat Bug Scorer</h1>
 
 <div class="input">
   <ul>
-    <li><label>Bug id <input id="bug-id"></label>
+    <li><label>Bug id <input id="bug-id"></label> <button onclick="updateFromBug()">Update</button>
 
     <li><label>URL <input id="url"></label>
 
     <li>Platform
-      <ul>
+      <ul id="platform">
         <li><input type=checkbox checked id="platform-windows" value="0.7"><label for=platform-windows>Windows</label>
         <li><input type=checkbox checked id="platform-mac" value="0.2"><label for=platform-mac>macOS</label>
         <li><input type=checkbox checked id="platform-linux" value="0.1"><label for=platform-linux>Linux</label>
-        <li><input type=checkbox checked id="platform-mobile" value="1"><label for="platform-mobile">Mobile</label>
+        <li><input type=checkbox checked id="platform-android" value="1"><label for=platform-android>Android</label>
       </ul>
 
     <li>Impact
       <select id="impact">
-        <option value=100>Site broken
-        <option value=100>Unsupported / Blocked
-        <option value=60>Workflow broken
-        <option value=30>Feature broken
-        <option value=30>Content missing
-        <option value=20>Significant visual
-        <option value=1>Minor visual
-        <option value=20>Unsupported warning
+        <option id=impact-site-broken value=100>Site broken
+        <option id=impact-blocked value=100>Unsupported / Blocked
+        <option id=impact-workflow-broken value=60>Workflow broken
+        <option id=impact-feature-broken value=30>Feature broken
+        <option id=impact-content-missing value=30>Content missing
+        <option id=impact-significant-visual value=20>Significant visual
+        <option id=impact-minor-visual value=1>Minor visual
+        <option id=impact-unsupported-warning value=20>Unsupported warning
       </select>
 
     <li>Affects users
       <select id="affects">
-        <option value=1>All
-        <option value=0.3>Some
-        <option value=0.1>Few
+        <option id=affects-all value=1>All
+        <option id=affects-some value=0.3>Some
+        <option id=affects-few value=0.1>Few
       </select>
 
   </ul>
@@ -70,7 +81,15 @@ label > input {
     <tr><th>Severity Score: <td><output id="severity-score"></output>
     <tr><th>Priority Score: <td><output id="priority-score"></output>
     <tr><th>Overall Score: <td><output id="score"></output>
+  </table>
+  <hr>
+  <table>
     <tr><th>Suggested Priority: <td><output id="priority"></output>
     <tr><th>Suggested Severity: <td><output id="severity"></output>
-  </ul>
+  </table>
+  <dl>
+    <dt>User story: <dd><pre><output id="user-story"></output></pre><button onclick=copyElemText("user-story")>Copy</button>
+  </dl>
 </div>
+
+<script src="scorebug.js"></script>
