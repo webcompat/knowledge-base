@@ -205,7 +205,7 @@ async function updateFromBug() {
   const bugData = bugsData.bugs[0];
 
   if (bugData.product != "Web Compatibility") {
-    console.log(`Bug {bugNumber} is not a Web Compatibility product bug`);
+    console.log(`Bug ${bugNumber} is not a Web Compatibility product bug`);
     return;
   }
 
