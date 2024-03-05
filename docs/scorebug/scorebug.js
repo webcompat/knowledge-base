@@ -5,7 +5,6 @@ const ALL_IMPACT = getCategoryValues("impact", "option");
 const ALL_AFFECTS = getCategoryValues("affects", "option");
 
 function getCategoryValues(prefix, elemType) {
-  console.log(`#${prefix} ${elemType}`, document.querySelectorAll(`#${prefix} ${elemType}`));
   return Array.from(document.querySelectorAll(`#${prefix} ${elemType}`)).map(elem => {
     const [gotPrefix, ...rest] = elem.id.split("-");
     if (gotPrefix != prefix) {
@@ -104,7 +103,6 @@ function readData() {
 }
 
 function getUserStory(data) {
-  console.log(data, Array.from(Object.values(data.platforms)).filter(x => x.included));
   return `platform:${Array.from(Object.values(data.platforms)).filter(x => x.included).map(x => x.name).join(",")}
 impact:${data.impact.name}
 affects:${data.affects.name}
@@ -221,6 +219,7 @@ async function updateFromBug() {
     } else if (bugData.component == "Mobile") {
       platforms = ["android"];
     }
+    data.platforms = platforms;
   }
   setFieldsFromBug(data);
 }
