@@ -1,5 +1,5 @@
 mypy==0.982
-pre-commit==2.20.0
+pre-commit==3.7.0
 python-dotenv==0.21.0
 python-slugify==6.1.2
 ruamel.yaml==0.17.21
