@@ -1,3 +1,9 @@
+# Note: The WebCompat KB moved into Bugzilla!
+
+All entries are now stored in Bugzilla inside the [`Web Compatibility :: Knowledge Base` component](https://bugzilla.mozilla.org/buglist.cgi?product=Web%20Compatibility&component=Knowledge%20Base&resolution=---&list_id=17010432). This repo is no longer used.
+
+---
+
 # The Web Compatibility Knowledge Base
 
 This repository contains a subset of the Web Compatibility teams' knowledge about real-world site breakage. With this collection, we hope to
